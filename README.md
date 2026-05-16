@@ -56,16 +56,28 @@ Say "set this up for me" once Claude opens.
 
 ### Path 2: Claude Code plugin marketplace install
 
-Fastest path if you only want `deslop` and the bare templates (skip the SOUL onboarding).
+Fastest path. Install everything at once or cherry-pick individual skills.
+
+**Install all five skills:**
 
 ```
 /plugin marketplace add muddahany/soul-skills
-/plugin install deslop@soul-skills
+/plugin install everything@soul-skills
 ```
 
-Available plugins: `deslop`, `soul`, `platform-hat-deriver`, `voice-hat-template`, `platform-hat-template`.
+**Or install one at a time:**
 
-If you install `soul` this way, it lands UNPOPULATED. You will need to fill it in manually or run the onboarding from Path 1 afterwards.
+```
+/plugin install deslop@soul-skills
+/plugin install soul@soul-skills
+/plugin install platform-hat-deriver@soul-skills
+/plugin install voice-hat-template@soul-skills
+/plugin install platform-hat-template@soul-skills
+```
+
+Available plugins: `everything`, `deslop`, `soul`, `platform-hat-deriver`, `voice-hat-template`, `platform-hat-template`.
+
+If you install `soul` (alone or via `everything`), it lands UNPOPULATED. Fill it in manually or run the onboarding from Path 1 afterwards.
 
 ### Path 3: manual `cp -r` (for power users)
 

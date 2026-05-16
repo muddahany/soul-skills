@@ -10,6 +10,19 @@
   },
   "plugins": [
     {
+      "name": "everything",
+      "description": "Install all five skills at once: deslop, soul, platform-hat-deriver, voice-hat-template, platform-hat-template. SOUL ships unpopulated; run the interactive onboarding (see CLAUDE.md in the repo) to fill it in after install.",
+      "source": "./",
+      "strict": false,
+      "skills": [
+        "./skills/deslop",
+        "./skills/soul",
+        "./skills/platform-hat-deriver",
+        "./skills/voice-hat-template",
+        "./skills/platform-hat-template"
+      ]
+    },
+    {
       "name": "deslop",
       "description": "Universal pass for catching AI-generated tells in any text draft before publishing. Catches structural rhythm uniformity, AI-flavored vocabulary, copula avoidance, template phrases, and tone red flags.",
       "source": "./",
