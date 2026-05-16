@@ -36,21 +36,48 @@ Let the user pick.
 
 Recommend voice-to-text up front: "Speak your answers via Wispr Flow or similar. Spoken answers expose authentic phrasing typed ones smooth over."
 
-Ask these in order, one or two at a time. Adapt. If an answer is short or AI-shaped, ask a followup ("can you say more?", "what's a specific example?").
+The interview is structured around the deep framing: NOTICE, VALUE, WHO, FOCUS, THINK, EXPRESSION. The expression questions (banned phrases, punctuation, format) come at the END, not the start. Voice rules without the thinking behind them produce a hollow style guide.
 
-1. "How would you describe how you sound in writing in one sentence? A friend describing you."
-2. "Which 3 to 5 phrases do you NEVER want to see in your own writing?"
-3. "Any punctuation you want banned?" (em dash is common)
-4. "Do you use CAPS for emphasis? Bold? Italics? Or none?"
-5. "Short paragraphs or long ones?"
-6. "Do you lead with the result or build up to it?"
-7. "Do you hedge ('might', 'could', 'perhaps') or state directly?"
-8. "How casual or formal? Slang OK? Curse words OK?"
-9. "Do you use lists/bullets a lot or mostly flowing prose?"
-10. "What's an example of writing you have seen that made you cringe? What was wrong with it?"
-11. "What's an example of writing you have seen that made you nod? What was right about it?"
-12. "Are there 2 to 3 values you hold that change how you write? (precision over politeness, numbers when you have them, skepticism by default, etc.)"
-13. "Anything platform-specific that matters? (Reddit comments, LinkedIn posts, Slack DMs, etc.)"
+Ask in this order, one or two questions at a time. Adapt. If an answer is short or AI-shaped, ask a followup ("can you say more?", "what's a specific example?").
+
+### What I Notice (the perceptual filter)
+
+1. "What do you notice that other people in your field tend to miss? What's the thing you spot first when you walk into a meeting / read a codebase / hear someone's pitch?"
+2. "When someone describes a problem to you, what do you HEAR underneath the words? What signals do you read?"
+3. "What kind of detail makes you stop and pay attention? What kind of detail bores you?"
+
+### What I Value (automatic leans)
+
+4. "When forced to choose, what do you reach for? Genuine vs polished? Building vs talking? Speed vs precision? Give 3 to 5 X-over-Y statements with a one-line reason for each."
+
+### Who I Am (identity, not resume)
+
+5. "Where are you from, where have you lived, what cultural register shows up in your writing?"
+6. "Real scars: what hard things have you done that show up in voice? (3am pages, lost deals, failed projects, public corrections, etc.)"
+7. "Faith, values, or beliefs that surface in writing. Skip if none."
+
+### Current Focus (time-decays)
+
+8. "What are you actually working on this month? 2 to 5 things that are load-bearing right now."
+
+### How I Think
+
+9. "If you are technical: what mental models, patterns, or tools do you reach for? Be concrete."
+10. "How do you approach business or commercial decisions? Scope, money, work."
+
+### Expression: voice rules (lowest priority but highest signal day-to-day)
+
+11. "Which 3 to 5 phrases do you NEVER want to see in your own writing?"
+12. "Any punctuation you want banned? (em dash, ellipses, etc.)"
+13. "Do you use CAPS for emphasis? Bold? Italics? Or none?"
+14. "Short paragraphs or long? Lead with result or build up to it? Hedge or state directly?"
+15. "Casual or formal? Slang OK? Curse words OK?"
+
+### Wrap
+
+16. "What's an example of writing you have seen that made you cringe? Why?"
+17. "What's an example of writing you have seen that made you nod? Why?"
+18. "Anything platform-specific that matters now? (Reddit, LinkedIn, Slack DMs, etc.) We can derive platform hats later."
 
 ## Mode: HYBRID
 
@@ -58,19 +85,21 @@ Run SAMPLE first. Then ask only the INTERVIEW questions the samples did not answ
 
 ## Draft the populated SOUL.md
 
-Replace the template structure in `SKILL.md` with the user's actual content:
+Replace the template structure in `SKILL.md` with the user's actual content, in this order:
 
-- **Identity paragraph** — one paragraph in the user's voice about who they are AS A WRITER. Not job title.
-- **Banned characters** — bullet list with brief reasons.
-- **Banned phrases** — their actual list.
-- **Required style rules** — positive rules they care about.
-- **Writing style paragraph** — 1 to 2 paragraphs of tone description.
-- **Values that shape voice** — 3 to 7 values. Only ones that actually change writing.
-- **Examples** — at least 2 before/after pairs. Use real samples if provided (paraphrased if sensitive). Otherwise generate plausible ones and ask user to confirm.
+- **The thesis paragraphs** — keep as-is. Do not edit. They are the framing for everything else.
+- **What I Notice** — 4 to 7 bulleted perceptual filters from question set 1. Each starts with a sharp observation in the user's words.
+- **What I Value** — 5 to 10 X-over-Y bullets from question 4. Each with a one-line WHY.
+- **Who I Am** — 2 to 4 short paragraphs synthesised from questions 5 to 7. Texture, not resume.
+- **Current Focus** — from question 8. Date-stamp it ("As of [month/year]") so the user knows when to refresh.
+- **How I Think** — Technical and Business subsections from questions 9 and 10.
+- **Expression: non-negotiables** — numbered list combining default rules (no em dash, no fake certainty, no emoji unless asked, real numbers only) plus the user's specific bans from questions 11 to 15.
+- **Whisper Flow** — keep as-is.
+- **Examples** — at least 2 before/after pairs. Use real samples if provided (paraphrased if sensitive). Otherwise generate plausible ones and ask the user to confirm.
 
-Tag uncertain rules `[verify]` so the user can spot-check.
+Tag uncertain extractions `[verify]` so the user can spot-check.
 
-**Important:** Remove the "NOT YET POPULATED" callout at the top. Also remove the STATE CHECK section from SKILL.md (it is no longer needed once populated). Keep the references/onboarding.md file on disk in case the user wants to re-run the onboarding later.
+**Important:** Remove the "STATE CHECK" section from SKILL.md (it is no longer needed once populated). Keep the references/onboarding.md file on disk in case the user wants to re-run the onboarding later.
 
 ## Review with the user
 

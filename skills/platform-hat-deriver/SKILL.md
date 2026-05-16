@@ -52,12 +52,15 @@ If the platform is NOT in the reference (niche forum, internal company tool, new
 
 ### Step 3: Gather personal and contextual rules (from the user, always)
 
-These cannot be looked up. Ask 4 questions, one or two at a time. Recommend voice-to-text (Wispr Flow, macOS Dictation, Whisper) for richer answers.
+These cannot be looked up. Ask 7 questions, one or two at a time. Recommend voice-to-text (Wispr Flow, macOS Dictation, Whisper) for richer answers.
 
-1. "What makes a post on [platform] look obviously AI-generated to YOU? Give 2 to 3 specific tells you have noticed. These are platform + audience-specific, not generic AI tells."
-2. "How does YOUR voice adjust for this platform versus how you write elsewhere? More casual, more formal, more direct, more performative? Be specific."
-3. "Do you have 2 to 3 real examples of posts on this platform that match the register you want? Paste them if you do. Samples beat descriptions." (optional but high-value)
-4. "Anything community-specific that matters? Algorithm quirks YOU have noticed, audience expectations in YOUR niche, community taboos, posting cadence rules."
+1. **Failure modes:** "What makes a post on [platform] look obviously AI-generated to YOU? Give 2 to 3 specific tells you have noticed. These are platform + audience-specific, not generic AI tells."
+2. **Tone overlay:** "How does YOUR voice adjust for this platform versus how you write elsewhere? More casual, more formal, more direct, more performative? Be specific."
+3. **Target channels / audience:** "WHERE on [platform] will you post? Specific subreddits, channels, audiences, lists, or contact segments? For each, what kind of contribution do you bring? (e.g., r/aws = cost optimization war stories; r/devops = real incident lessons; etc.)"
+4. **Hard limits:** "What are 3 to 5 things you will NEVER do on this platform? Hard limits, not preferences. (e.g., 'never link to my own site unprompted', 'never mention client names', 'never start a comment with As a [role]', 'never use hashtags here')."
+5. **Samples:** "Do you have 2 to 3 real examples of posts on this platform that match the register you want? Paste them if you do. Samples beat descriptions." (optional but high-value)
+6. **AI detection signals:** "Beyond generic AI tells, are there platform-specific signals that get a post flagged as AI by THIS community? (e.g., on Reddit: heavy formatting in comments; on LinkedIn: humblebrag openers; on Slack: paragraph walls). 3 to 6 checklist items."
+7. **Community quirks:** "Anything else community-specific that matters? Algorithm behaviour YOU have noticed, audience expectations in YOUR niche, community taboos, posting cadence rules."
 
 If the user gives weak or AI-shaped answers, ask followups ("can you say more about that?", "what's a specific example?"). Do NOT fabricate.
 
@@ -65,12 +68,14 @@ If the user gives weak or AI-shaped answers, ask followups ("can you say more ab
 
 Combine the looked-up syntax (Step 2) with the personal/contextual rules (Step 3):
 
-- **Platform syntax**: from the reference, or from the user if the platform is unknown. This is mechanical and must be precise.
-- **Length norms**: from the reference where available, refined by the user's "what's a typical good post" answer.
-- **Format constraints**: what the platform UI rewards or punishes, derived from syntax + reference structural notes.
-- **Failure modes**: from the user's Step 3 answers. Personal to them and their audience.
-- **Tone overlay**: a 1 to 2 paragraph description from the user's Step 3 answer.
-- **Required structural rules**: anything the platform's algorithm or culture explicitly rewards.
+- **Platform syntax** (Step 2): from the reference, or from the user if unknown. Mechanical, must be precise.
+- **Target channels and audience** (Step 3 q3): where the user posts, what they bring to each.
+- **Length norms**: from the reference where available, refined by the user's typical-good-post answer.
+- **Tone overlay** (Step 3 q2): 1 to 2 paragraphs on register adjustment.
+- **Hard limits** (Step 3 q4): non-negotiable "never do this" rules.
+- **Failure modes** (Step 3 q1): platform-specific AI-tells.
+- **AI detection checklist** (Step 3 q6): platform-specific signals that get flagged as AI. Convert each tell into a `[ ]` checkbox item.
+- **Required structural rules** (Step 3 q7): community/algorithm quirks.
 
 Anything uncertain, tag `[verify]` in the draft.
 
@@ -81,7 +86,7 @@ Generate a SKILL.md at `~/.claude/skills/<platform>-hat/SKILL.md` using this str
 ```markdown
 ---
 name: <platform>-hat
-description: Use when drafting content for <Platform>. Trigger on requests like "write a <platform> post", "draft this for <platform>", "<platform> reply", or when the user explicitly mentions <platform>. Layered on top of `soul`: SOUL provides the base voice; this hat applies <platform>-specific syntax, format, length, tone overlay, and failure-mode checks. Final step copies the output to clipboard.
+description: Use when drafting content for <Platform>. Trigger on requests like "write a <platform> post", "draft this for <platform>", "<platform> reply", or when the user explicitly mentions <platform>. Layered on top of `soul`: SOUL provides the base voice; this hat applies <platform>-specific syntax, format, length, tone overlay, failure-mode checks, hard limits, and AI-detection check. Final step copies the output to clipboard.
 ---
 
 # <Platform> Hat
@@ -103,9 +108,15 @@ This is the rendering surface. The output MUST conform exactly or the post break
 - **Line breaks:** [single newline = paragraph / blank line required]
 - **Character limit:** [hard cap if any, e.g., 280 for Twitter, ~3000 for LinkedIn, none otherwise]
 
-## Format constraints
+## Target channels and audience
 
-[Bulleted list extracted from user's answers]
+Where on this platform the user will post and what they bring to each.
+
+[From Step 3 question 3. Examples:
+- **r/aws** — cost optimization war stories and specific dollar wins
+- **r/devops** — real incident lessons, no theory
+- **DevOps Slack #infra-chat** — quick wins, code snippets only
+- ...]
 
 ## Length norms
 
@@ -115,9 +126,32 @@ This is the rendering surface. The output MUST conform exactly or the post break
 
 [1 to 2 paragraphs describing how the user's voice adjusts for this platform]
 
+## Hard limits (never do these)
+
+The user's explicit no-go rules for this platform. Non-negotiable.
+
+[From Step 3 question 4. Examples:
+- Never link to own site unprompted
+- Never mention client names
+- Never start a comment with "As a [role]"
+- Never use hashtags
+- ...]
+
 ## Failure modes specific to <Platform>
 
 [Bulleted list of platform-specific AI-tells. These get an automatic rewrite.]
+
+## AI detection checklist (run before publishing)
+
+Platform-specific signals that this community flags as AI. Run this checklist on EVERY draft before clipboard copy.
+
+[From Step 3 question 6. Examples for Reddit:
+- [ ] No em dashes anywhere
+- [ ] No "It's worth noting that..." or "That said,..."
+- [ ] No headers or bullets in comments
+- [ ] No "I'd recommend..." (say "Try..." or "Use...")
+- [ ] No three-adjective triads ("robust, seamless, and innovative")
+- ...]
 
 ## Required structural rules (if any)
 
@@ -129,10 +163,12 @@ This is the rendering surface. The output MUST conform exactly or the post break
 2. Apply tone overlay (register adjustment).
 3. Apply format constraints AND platform syntax. Convert markdown to the variant the platform actually renders. Strip what is unsupported.
 4. Run failure-mode check; rewrite any matches.
-5. Trim or expand to length norms. Enforce character limit if any.
-6. Present the revised draft with a short summary of what changed.
-7. Wait for user approval.
-8. **Copy the approved draft to the clipboard.** Use `pbcopy` on macOS, `xclip -selection clipboard` on Linux, or `clip.exe` on Windows. Use HEREDOC or `printf '%s'` for multi-line content so newlines are preserved. Confirm to the user: "Copied to clipboard."
+5. Run the AI detection checklist. EVERY item must pass before proceeding.
+6. Verify against Hard Limits. Any hit = stop and rewrite that section.
+7. Trim or expand to length norms. Enforce character limit if any.
+8. Present the revised draft with a short summary of what changed, including which AI-detection items were caught and rewritten.
+9. Wait for user approval.
+10. **Copy the approved draft to the clipboard.** Use `pbcopy` on macOS, `xclip -selection clipboard` on Linux, or `clip.exe` on Windows. Use HEREDOC or `printf '%s'` for multi-line content so newlines are preserved. Confirm to the user: "Copied to clipboard."
 
 ## Examples (where available)
 
