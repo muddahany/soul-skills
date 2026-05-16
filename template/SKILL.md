@@ -48,10 +48,4 @@ What the skill should NOT do. Failure modes to guard against.
 - [Anti-pattern 1]
 - [Anti-pattern 2]
 
-## Tips for Authors
-
-- Keep this file under 500 lines. If it grows past that, split into `references/` subdirectory with pointers.
-- Use kebab-case for the skill folder name and the `name:` frontmatter field.
-- Use imperative form ("Do X") not third-person ("The skill does X").
-- Explain WHY behind rules, not just WHAT. Avoid excessive ALL-CAPS MUST/NEVER patterns.
-- The `description` field is the most important line. It is the primary trigger. Iterate on it.
+See [CONTRIBUTING.md](../CONTRIBUTING.md) for repo-wide conventions and the quality bar for new skills.
