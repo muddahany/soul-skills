@@ -8,7 +8,7 @@
 |---|---|---|
 | `skills/deslop/` | Universal skill | Catches AI-generated tells in any text draft. Install as-is. |
 | `skills/soul/` | Personalized skill, populated via onboarding | Encodes the user's personal voice, writing style, and values that shape voice. Drives all "write as me" use cases. **Recommended core skill.** |
-| `skills/platform-hat-deriver/` | Meta-skill | Auto-generates platform-specific hats (LinkedIn, Reddit, Slack, etc.) from a populated SOUL plus a platform name. Run once per platform. |
+| `skills/platform-hat-deriver/` | Meta-skill | Auto-generates platform-specific hats from a populated SOUL plus a platform name. Built-in syntax reference for LinkedIn, Reddit, Slack, Twitter/X, Discord, GitHub, Substack, email (no user input needed for syntax). Only personal/contextual rules are asked. Run once per platform. |
 | `skills/voice-hat-template/` | Manual template, escape hatch | Raw skeleton with placeholders. Only for users who want manual control instead of the SOUL onboarding. |
 | `skills/platform-hat-template/` | Manual template, escape hatch | Raw skeleton for platform rules. Most users should prefer `platform-hat-deriver`. |
 

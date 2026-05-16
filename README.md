@@ -24,7 +24,7 @@ The bar: when someone reads your output, they should think "this person has some
 |---|---|---|
 | `skills/deslop/` | Universal skill | Catches AI-generated tells in any text draft. Install as-is. |
 | `skills/soul/` | Personalized skill, populated by Claude | Encodes YOUR voice, writing style, and values that shape your voice. The recommended core skill. |
-| `skills/platform-hat-deriver/` | Meta-skill | Auto-generates platform-specific hats (LinkedIn, Reddit, Slack, etc.) from your populated SOUL. Run once per platform. |
+| `skills/platform-hat-deriver/` | Meta-skill | Auto-generates platform-specific hats from your populated SOUL. Built-in syntax reference for LinkedIn, Reddit, Slack, Twitter/X, Discord, GitHub, Substack, and email so the deriver only asks the user about personal/contextual rules. Run once per platform. |
 | `skills/voice-hat-template/` | Manual template (escape hatch) | Raw skeleton if you prefer to write your own voice rules without the SOUL interactive interview. |
 | `skills/platform-hat-template/` | Manual template (escape hatch) | Raw skeleton for platform rules. Most users should prefer `platform-hat-deriver`. |
 

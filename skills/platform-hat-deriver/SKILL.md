@@ -1,6 +1,6 @@
 ---
 name: platform-hat-deriver
-description: Use to AUTOMATICALLY generate a platform-specific writing hat from the user's populated SOUL primitive plus a platform name. Trigger on requests like "create a LinkedIn hat", "make me a Reddit hat", "derive a platform hat for Slack", "build a Twitter writing skill", "I need a Discord hat", "generate a platform-specific voice for [X]". REQUIRES SOUL to be populated first; if not, point the user at the SOUL onboarding in claude-code-skills/CLAUDE.md. One run produces one hat. Run the skill again for additional platforms. This is the recommended path over the manual platform-hat-template for most users.
+description: Use to AUTOMATICALLY generate a platform-specific writing hat from the user's populated SOUL primitive plus a platform name. Trigger on requests like "create a LinkedIn hat", "make me a Reddit hat", "derive a platform hat for Slack", "build a Twitter writing skill", "I need a Discord hat", "generate a platform-specific voice for [X]". Built-in reference covers LinkedIn, Reddit, Slack, Twitter/X, Discord, GitHub, Substack, and email syntax (public facts, no user input needed). Only the personal/contextual rules (failure modes per the user's audience, tone overlay, samples) are asked. REQUIRES SOUL to be populated first; if not, point the user at the SOUL onboarding in claude-code-skills/CLAUDE.md. One run produces one hat. Run the skill again for additional platforms. This is the recommended path over the manual platform-hat-template.
 ---
 
 # Platform Hat Deriver
@@ -34,43 +34,47 @@ Lower-case and kebab-case the answer. Use it as the skill folder name: `<platfor
 
 If the user already has a hat at `~/.claude/skills/<platform>-hat/`, ask whether to overwrite, pick a new name, or cancel.
 
-### Step 2: Gather platform conventions
+### Step 2: Resolve platform syntax (from known reference, not from the user)
 
-Ask 4 to 6 questions, one or two at a time. Adapt based on answers. Recommend voice-to-text (Wispr Flow, macOS Dictation, Whisper) for richer answers.
+Platform syntax is public, factual, and stable. Look it up in the "Known platforms" reference section below. Do NOT ask the user. If the platform is listed, pre-fill the Syntax section of the generated hat from the reference. Show it to the user briefly with one prompt: "Here is what I know about [platform]'s syntax. Anything wrong or outdated?" Move on quickly unless they correct something.
 
-1. "What makes a post on [platform] look obviously AI-generated to you? Give 2 to 3 specific tells you have noticed."
-2. "What is the typical length of a good post or comment there?" (word count or rough range)
-3. **Platform syntax** (the most important question, ask explicitly). "What is the SYNTAX of this platform? Specifically:
-   - Does it render full markdown, a markdown variant (Slack mrkdwn, Reddit's subset, etc.), or no markdown at all?
-   - Bold syntax: `**bold**`, `*bold*`, `_bold_`, or none?
-   - Italics syntax: `*italic*`, `_italic_`, or none?
-   - Headers allowed? In posts, in comments, both, or never?
-   - Code blocks: triple backticks, single backticks for inline, or unsupported?
-   - Inline links: markdown `[text](url)`, auto-link only, numbered references, or none?
-   - Mentions: `@user`, `u/user`, `<@user>`, or no mentions?
-   - Hashtags: clickable, just text, or skip entirely?
-   - Line breaks: single newline = paragraph, or do you need a blank line?
-   - Character limit: any hard cap? (Twitter: 280, LinkedIn ~3000, etc.)"
-4. "How does YOUR voice adjust for this platform versus how you write elsewhere? More casual, more formal, more direct, more performative?"
-5. "Do you have 2 to 3 real examples of posts on this platform that match the register you want? Paste them if you do. Samples beat descriptions." (optional but high-value)
-6. "Anything else specific to this platform that matters? Algorithm quirks, audience expectations, community taboos, posting cadence."
+If the platform is NOT in the reference (niche forum, internal company tool, new platform), THEN ask the syntax questions:
+- Does it render full markdown, a variant, or no markdown?
+- Bold syntax (`**bold**` / `*bold*` / not supported)?
+- Italics syntax?
+- Headers allowed where?
+- Code blocks?
+- Inline links?
+- Mentions syntax?
+- Hashtags?
+- Line break behaviour?
+- Character limit?
 
-If the user gives weak or AI-shaped answers, ask followups ("can you say more about that?", "what's a specific example?"). Do NOT fabricate platform rules you do not have evidence for.
+### Step 3: Gather personal and contextual rules (from the user, always)
 
-### Step 3: Extract the platform deltas
+These cannot be looked up. Ask 4 questions, one or two at a time. Recommend voice-to-text (Wispr Flow, macOS Dictation, Whisper) for richer answers.
 
-From the user's answers, identify and write down:
+1. "What makes a post on [platform] look obviously AI-generated to YOU? Give 2 to 3 specific tells you have noticed. These are platform + audience-specific, not generic AI tells."
+2. "How does YOUR voice adjust for this platform versus how you write elsewhere? More casual, more formal, more direct, more performative? Be specific."
+3. "Do you have 2 to 3 real examples of posts on this platform that match the register you want? Paste them if you do. Samples beat descriptions." (optional but high-value)
+4. "Anything community-specific that matters? Algorithm quirks YOU have noticed, audience expectations in YOUR niche, community taboos, posting cadence rules."
 
-- **Platform syntax**: markdown variant, bold/italic syntax, headers, code blocks, links, mentions, hashtags, line-break behaviour, character limits. This is the most concrete section; encode it precisely so the hat can mechanically enforce it.
-- **Format constraints**: what the platform UI rewards or punishes (length, structure, format).
-- **Length norms**: numeric guidance for posts and replies.
-- **Failure modes**: platform-specific tells that mark a post as AI-generated to that community.
-- **Tone overlay**: a 1 to 2 paragraph description of how the user's voice adjusts for this platform's register.
-- **Required structural rules**: anything the platform's algorithm or culture explicitly rewards or expects.
+If the user gives weak or AI-shaped answers, ask followups ("can you say more about that?", "what's a specific example?"). Do NOT fabricate.
 
-Anything you are uncertain about, tag `[verify]` in the draft so the user can spot-check.
+### Step 4: Synthesize the deltas
 
-### Step 4: Draft the hat
+Combine the looked-up syntax (Step 2) with the personal/contextual rules (Step 3):
+
+- **Platform syntax**: from the reference, or from the user if the platform is unknown. This is mechanical and must be precise.
+- **Length norms**: from the reference where available, refined by the user's "what's a typical good post" answer.
+- **Format constraints**: what the platform UI rewards or punishes, derived from syntax + reference structural notes.
+- **Failure modes**: from the user's Step 3 answers. Personal to them and their audience.
+- **Tone overlay**: a 1 to 2 paragraph description from the user's Step 3 answer.
+- **Required structural rules**: anything the platform's algorithm or culture explicitly rewards.
+
+Anything uncertain, tag `[verify]` in the draft.
+
+### Step 5: Draft the hat
 
 Generate a SKILL.md at `~/.claude/skills/<platform>-hat/SKILL.md` using this structure:
 
@@ -135,7 +139,7 @@ This is the rendering surface. The output MUST conform exactly or the post break
 [Before/after pairs from user samples if provided, else generated examples flagged for user verification]
 ```
 
-### Step 5: Show the draft to the user
+### Step 6: Show the draft to the user
 
 Display the full generated SKILL.md. Ask:
 
@@ -146,7 +150,7 @@ Display the full generated SKILL.md. Ask:
 
 Iterate. Be willing to rewrite sections. Voice-to-text helps users articulate refinements quickly.
 
-### Step 6: Install
+### Step 7: Install
 
 Write the final SKILL.md to `~/.claude/skills/<platform>-hat/SKILL.md`. Confirm the file is in place. Tell the user:
 
@@ -182,3 +186,122 @@ Write the final SKILL.md to `~/.claude/skills/<platform>-hat/SKILL.md`. Confirm 
 - The failure-mode list is the single highest-leverage section. Spend the most time there.
 - If the user has 3+ real platform samples, sample-mode extraction is far better than question-only answers. Push for samples when possible.
 - After deriving the hat, suggest the user test it once on a real draft and tweak based on output.
+
+---
+
+## Known platforms reference
+
+Use this section to look up platform syntax in Step 2. These conventions are public, factual, and reasonably stable. Last updated 2026-05. If a user reports something here is wrong or outdated, trust their correction and update this file.
+
+### LinkedIn
+
+- **Markdown:** NO (post body renders as plain text)
+- **Bold:** not supported (Unicode workarounds discouraged, look performative)
+- **Italics:** not supported
+- **Headers:** not supported
+- **Code blocks:** not supported
+- **Inline links:** autolinks only (paste URL, will be clickable)
+- **Mentions:** `@user` with tag completion in the composer
+- **Hashtags:** clickable, limit 3 per post is the common-wisdom max
+- **Line breaks:** single newline respected, blank line for paragraph break
+- **Character limits:** posts 3,000; comments 1,250; headlines 220; about section 2,600
+
+### Reddit
+
+- **Markdown:** subset, Reddit's own flavor (Fancy Pants Editor)
+- **Bold:** `**bold**`
+- **Italics:** `*italic*` or `_italic_`
+- **Strikethrough:** `~~strike~~`
+- **Headers:** `# header` allowed in posts, NOT in comments
+- **Code blocks:** triple backticks fenced; indent 4 spaces for legacy
+- **Inline links:** `[text](url)`
+- **Mentions:** `u/username` (no @ symbol)
+- **Hashtags:** NOT clickable, do not work
+- **Line breaks:** blank line = paragraph break; single newline is collapsed unless you double-space at end of line
+- **Subreddit links:** `r/subname`
+- **Character limits:** posts 40,000; comments 10,000; titles 300
+
+### Slack
+
+- **Markdown:** mrkdwn variant (Slack's own, NOT standard markdown)
+- **Bold:** `*bold*` (SINGLE asterisks, not double; this is the most common mistake)
+- **Italics:** `_italic_`
+- **Strikethrough:** `~strike~` (single tilde, not double)
+- **Headers:** not supported
+- **Code blocks:** triple backticks fenced; single backticks inline
+- **Inline links:** `<url|text>` (NOT standard markdown syntax)
+- **Mentions:** `<@USERID>` programmatically; `@user` in the composer
+- **Hashtags:** NOT clickable; channel links use `<#CHANNELID|name>` or `#channel` in composer
+- **Line breaks:** respected as written (shift+enter for newline within message)
+- **Character limit:** ~4,000 soft per message; ~40,000 hard
+
+### Twitter / X
+
+- **Markdown:** NONE
+- **Bold:** not supported (Unicode workarounds frowned on)
+- **Italics:** not supported
+- **Headers:** not supported
+- **Code blocks:** not supported
+- **Inline links:** autolinks only; URLs count as 23 chars regardless of length
+- **Mentions:** `@user`
+- **Hashtags:** clickable, common wisdom: max 2 per tweet
+- **Line breaks:** respected as written
+- **Character limit:** 280 free tier, 25,000 Premium
+
+### Discord
+
+- **Markdown:** yes, full
+- **Bold:** `**bold**`
+- **Italics:** `*italic*` or `_italic_`
+- **Strikethrough:** `~~strike~~`
+- **Underline:** `__underline__`
+- **Spoiler:** `||spoiler||`
+- **Headers:** `# H1`, `## H2`, `### H3` (3 levels only)
+- **Code blocks:** triple backticks with optional language for syntax highlighting; single backticks inline
+- **Inline links:** `[text](url)` works in some channels (embeds), autolinks elsewhere
+- **Mentions:** `<@USERID>` programmatically; `@user` in composer
+- **Hashtags:** NOT clickable in messages (only used for channel routing)
+- **Line breaks:** respected (shift+enter for newline within message)
+- **Character limit:** 2,000 per message; 4,000 with Nitro
+
+### GitHub (Issues, PRs, comments, README)
+
+- **Markdown:** full GFM (GitHub Flavored Markdown)
+- **Bold:** `**bold**`
+- **Italics:** `*italic*` or `_italic_`
+- **Strikethrough:** `~~strike~~`
+- **Headers:** `# H1` through `###### H6`
+- **Code blocks:** triple backticks with language tag for syntax highlighting
+- **Inline links:** `[text](url)`
+- **Mentions:** `@user` or `@org/team`
+- **References:** `#123` for issues/PRs in same repo, `owner/repo#123` cross-repo
+- **Hashtags:** not a concept
+- **Line breaks:** GFM is more lenient than standard MD; single newline often treated as line break in lists and tables
+- **Character limit:** 65,536 per comment
+
+### Substack
+
+- **Markdown:** yes, in their editor
+- **Bold:** `**bold**`
+- **Italics:** `*italic*` or `_italic_`
+- **Headers:** yes, H1-H4
+- **Code blocks:** triple backticks
+- **Inline links:** `[text](url)`
+- **Mentions:** `@author` for cross-Substack mentions
+- **Hashtags:** not used
+- **Character limit:** none in practice; long-form expected
+
+### Email (plain text, safest default)
+
+- **Markdown:** depends on client; assume NO unless writing to a known-rich-text client
+- **Bold/italics:** plain text uses convention `*emphasis*` or `_emphasis_` but not rendered
+- **Headers:** text-based only (UPPERCASE or hyphen-underline)
+- **Code blocks:** indent or use line breaks
+- **Inline links:** paste full URL
+- **Mentions:** not a concept
+- **Line breaks:** preserve exactly as written; many clients soft-wrap
+- **Character limits:** no hard cap; SMTP body practical limit much higher than you would write
+
+### Adding a new platform to this reference
+
+Open a PR. Include the same 10 fields. Cite a source if the data is non-obvious. Date the addition.
