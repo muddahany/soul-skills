@@ -14,9 +14,23 @@ More templates and concrete skills will land here as they get cleaned up for pub
 
 ## How to use
 
+### Easiest path: let Claude install for you
+
+Clone this repo, open Claude Code in the directory, and Claude will auto-read [`CLAUDE.md`](./CLAUDE.md) and walk you through installing the skills. The onboarding file tells Claude exactly which questions to ask, which directories to copy, and how to help you fill in the templates.
+
+```bash
+git clone https://github.com/muddahany/claude-code-skills.git
+cd claude-code-skills
+claude
+```
+
+Then say "install these skills for me" or just describe what you want.
+
+### Manual install
+
 1. Clone or copy a skill directory into your local `~/.claude/skills/` folder.
 2. Open the `SKILL.md` and adjust the `description` frontmatter so Claude knows when to load it.
-3. If it's a template, fill in the placeholders with YOUR voice rules, banned phrases, or platform conventions.
+3. If it is a template, fill in the placeholders with YOUR voice rules, banned phrases, or platform conventions.
 4. Restart Claude Code or use the `Skill` tool to invoke it.
 
 Skills load into your CURRENT Claude Code context. They are not subagents. For when to use one vs the other, see the [Claude Code subagents docs](https://code.claude.com/docs/en/subagents) and the lessons below.
