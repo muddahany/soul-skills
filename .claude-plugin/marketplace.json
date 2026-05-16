@@ -5,13 +5,13 @@
     "email": "moh94hany@gmail.com"
   },
   "metadata": {
-    "description": "Claude Code skills built to AMPLIFY genuine voice, not generate fake voice. Anchored by SOUL, a personalized voice primitive populated interactively from your own writing samples or an interview. Composes with whisper-flow (raw dictation input), platform-hat-deriver (auto-derived platform hats), and deslop (universal AI-tell catcher).",
-    "version": "0.2.0"
+    "description": "Claude Code skills built to AMPLIFY genuine voice, not generate fake voice. Anchored by SOUL, a personalized voice primitive populated interactively from your own writing samples or an interview. Composes with whisper-flow (raw dictation input), read-incoming (processes messages others send you), platform-hat-deriver (auto-derived platform hats), and deslop (universal AI-tell catcher).",
+    "version": "0.2.1"
   },
   "plugins": [
     {
       "name": "everything",
-      "description": "Install all six skills plus /welcome and /diagnose commands: deslop, soul, platform-hat-deriver, whisper-flow, voice-hat-template, platform-hat-template. After install run /welcome to see next steps. SOUL ships unpopulated and self-onboards via /soul. Use /diagnose any time to health-check installed soul-skills.",
+      "description": "Install all seven skills plus /welcome and /diagnose commands: deslop, soul, platform-hat-deriver, whisper-flow, read-incoming, voice-hat-template, platform-hat-template. After install run /welcome to see next steps. SOUL ships unpopulated and self-onboards via /soul. Use /diagnose any time to health-check installed soul-skills.",
       "source": "./",
       "strict": false,
       "skills": [
@@ -19,6 +19,7 @@
         "./skills/soul",
         "./skills/platform-hat-deriver",
         "./skills/whisper-flow",
+        "./skills/read-incoming",
         "./skills/voice-hat-template",
         "./skills/platform-hat-template"
       ],
@@ -52,6 +53,15 @@
       "strict": false,
       "skills": [
         "./skills/platform-hat-template"
+      ]
+    },
+    {
+      "name": "read-incoming",
+      "description": "Input-side companion to whisper-flow. Processes incoming messages (long emails, RFPs, threads, support tickets, DMs) and extracts the real ask underneath, the underlying fear, implicit constraints, political context, and a recommended response shape. Composes with whisper-flow + soul + platform-hat + deslop when the user decides to draft a reply.",
+      "source": "./",
+      "strict": false,
+      "skills": [
+        "./skills/read-incoming"
       ]
     },
     {

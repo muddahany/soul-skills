@@ -1,0 +1,37 @@
+{
+  "skill_name": "read-incoming",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Read this client email and tell me what to do: 'Hey, hope you're well. Quick question, we've been having some intermittent reliability issues with the system lately and management is starting to ask questions. Can we hop on a call sometime this week to discuss our options? Nothing urgent, just want to understand what's possible. Thanks!'",
+      "expected_output": "Skill extracts: surface ask = call this week to discuss reliability options. Real ask underneath = the system is broken or unstable, management wants accountability. Underlying fear = looking bad to management, possible blame coming. Implicit constraints = needs to demo progress to management soon. Political context = management is escalating. What they did not ask = what changed recently, what 'intermittent' means in numbers, is this a regression. Recommended response shape includes asking what changed before agreeing to the call.",
+      "assertions": [
+        {"text": "Skill distinguishes surface ask ('call to discuss') from real ask (system is unstable)", "passed": false, "evidence": ""},
+        {"text": "Skill identifies 'Reliable' / 'reliability issues' signal as 'previously burned' or 'currently broken'", "passed": false, "evidence": ""},
+        {"text": "Skill identifies 'nothing urgent' as likely contradicted by 'management is asking questions'", "passed": false, "evidence": ""},
+        {"text": "Skill flags 'can we hop on a call' as potential avoid-paper-trail or distrust signal", "passed": false, "evidence": ""},
+        {"text": "Skill produces 'what they did NOT ask' section with concrete missing details", "passed": false, "evidence": ""},
+        {"text": "Skill does NOT auto-draft a response, presents brief and asks for direction", "passed": false, "evidence": ""}
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Process this RFP: '[15-paragraph generic RFP for AWS cost optimization consulting]'",
+      "expected_output": "Skill summarises chronologically if multi-section, extracts deadline, budget signals, scope ambiguity, decision-maker identity, and recommends response shape (proposal, intake call, or decline).",
+      "assertions": [
+        {"text": "Skill extracts deadline/budget/scope from RFP language", "passed": false, "evidence": ""},
+        {"text": "Skill identifies who the decision-maker likely is", "passed": false, "evidence": ""},
+        {"text": "Skill flags any sections that look like template-padding vs. real signals", "passed": false, "evidence": ""},
+        {"text": "Skill recommends response format (proposal / call / decline)", "passed": false, "evidence": ""}
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "My buddy texted me 'yo can you grab milk on the way home?'",
+      "expected_output": "Skill declines to process. Tells the user this is a single-line clear ask; just answer.",
+      "assertions": [
+        {"text": "Skill detects this is a one-line clear ask and declines to over-process", "passed": false, "evidence": ""}
+      ]
+    }
+  ]
+}

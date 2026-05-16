@@ -13,6 +13,8 @@ You just installed the **soul-skills** plugin. Here is what is available and wha
 |---|---|---|
 | `deslop` | Ready | Universal AI-tell catcher. Works as-is on any text draft. |
 | `soul` | **NEEDS SETUP** | Personal voice primitive. Ships unpopulated. Drives all "write as me" workflows. |
+| `whisper-flow` | Ready | Listens to YOU. Restructures voice-to-text dictation into clean prose without changing your ideas. |
+| `read-incoming` | Ready | Listens to OTHERS. Processes long emails, RFPs, threads, support tickets and extracts the real ask + recommended response shape. |
 | `platform-hat-deriver` | Ready (needs SOUL) | Auto-generates platform-specific hats (LinkedIn, Reddit, Slack, etc.) from your SOUL. |
 | `voice-hat-template` | Manual escape hatch | Raw skeleton. Use only if you skip SOUL. |
 | `platform-hat-template` | Manual escape hatch | Raw skeleton. Use only if you skip the deriver. |

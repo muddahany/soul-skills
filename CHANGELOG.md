@@ -6,6 +6,17 @@ Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versioning: [S
 
 ## [Unreleased]
 
+## [0.2.1] - 2026-05-17
+
+### Added
+- `read-incoming` skill: input pipeline for processing messages OTHERS send you (long client emails, RFPs, support tickets, comment threads). Extracts surface ask, real ask underneath, underlying fear, implicit constraints, political context, and a recommended response shape. Companion to whisper-flow.
+
+### Changed
+- README composition diagram now shows BOTH input pipelines: `read-incoming` (listens to others) and `whisper-flow` (listens to you), both feeding into soul → platform-hat → deslop → clipboard.
+- Marketplace `everything` bundle expanded to 7 skills.
+
+## [0.2.0] - 2026-05-17
+
 ### Added
 - `whisper-flow` skill: input pipeline for raw voice-to-text dictation. Composes with soul + platform hats. Preserves user ideas, restructures cadence only.
 - `examples/populated-soul-example.md`: sanitized example of a fully populated SOUL.md so new users can see what "done" looks like.

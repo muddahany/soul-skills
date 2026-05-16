@@ -21,7 +21,8 @@ If you prefer to clone and run from the repo, see [CLAUDE.md](./CLAUDE.md). The 
 |---|---|---|
 | `skills/soul/` | Personalized core | Encodes YOUR voice (perceptual filters, values, identity, current focus, expression rules). Self-onboards on first use. |
 | `skills/deslop/` | Universal | Catches AI-generated tells in any text draft. Install as-is. |
-| `skills/whisper-flow/` | Input pipeline | Takes raw voice-to-text dictation and restructures into clean prose without changing your ideas. |
+| `skills/whisper-flow/` | Input pipeline | Listens to YOU. Takes raw voice-to-text dictation and restructures into clean prose without changing your ideas. |
+| `skills/read-incoming/` | Input pipeline | Listens to OTHERS. Processes incoming messages (long emails, RFPs, threads, support tickets) and extracts the real ask, the underlying fear, implicit constraints, and a recommended response shape. |
 | `skills/platform-hat-deriver/` | Meta-skill | Auto-derives platform hats (LinkedIn, Reddit, Slack, etc.) from your SOUL. Built-in syntax reference for 8 platforms. |
 | `skills/voice-hat-template/` | Manual escape hatch | Raw skeleton if you skip the SOUL onboarding. |
 | `skills/platform-hat-template/` | Manual escape hatch | Raw skeleton if you skip the deriver. |
@@ -33,25 +34,30 @@ If you prefer to clone and run from the repo, see [CLAUDE.md](./CLAUDE.md). The 
 ## How it composes
 
 ```
-[voice-to-text]
-       │
-       ▼
-  whisper-flow   ──┐
-                   │  (input pipeline: preserves your ideas, cleans cadence)
-       ▼           │
-     soul       ──┤  (applies your voice: NOTICE, VALUE, expression rules)
-                   │
-       ▼           │
-  <platform>-hat──┤  (applies platform syntax, hard limits, AI-detection)
-                   │
-       ▼           │
-     deslop     ──┘  (final universal AI-tell pass)
-       │
-       ▼
-  copy to clipboard
+[incoming message]                 [your voice]
+       │                                │
+       ▼                                ▼
+  read-incoming                   voice-to-text
+       │                                │
+       ▼                                ▼
+     BRIEF                         whisper-flow
+       │                                │
+       └─────► (you react) ◄────────────┘
+                    │
+                    ▼
+                 soul              (applies your voice)
+                    │
+                    ▼
+            <platform>-hat        (platform syntax, hard limits, AI-detection)
+                    │
+                    ▼
+                 deslop           (final universal AI-tell pass)
+                    │
+                    ▼
+            copy to clipboard
 ```
 
-Each output-producing skill ends with a clipboard copy. You paste straight into Slack, LinkedIn, your editor, wherever.
+Two input pipelines: `read-incoming` for what others send you, `whisper-flow` for what you say. Both feed into the same voice/platform/clean output pipeline. Every output-producing skill ends with a clipboard copy. You paste straight into Slack, LinkedIn, your editor, wherever.
 
 ## Why this exists
 

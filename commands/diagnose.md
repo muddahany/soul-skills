@@ -23,10 +23,11 @@ Loop through these expected components:
 
 - `deslop` (universal)
 - `soul` (personalised core)
+- `whisper-flow` (input pipeline, listens to you)
+- `read-incoming` (input pipeline, listens to others)
 - `platform-hat-deriver` (meta-skill)
 - `voice-hat-template` (manual escape hatch)
 - `platform-hat-template` (manual escape hatch)
-- `whisper-flow` (input pipeline)
 
 For each, check:
 
