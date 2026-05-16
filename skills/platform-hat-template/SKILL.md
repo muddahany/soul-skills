@@ -9,6 +9,8 @@ description: TEMPLATE skill. Copy this folder, rename it to PLATFORM-hat (e.g., 
 >
 > Replace every `<<PLACEHOLDER>>` below with rules specific to the platform you are writing for. Delete this callout when you do.
 
+> **Genuineness check.** Read the actual platform for at least an hour BEFORE filling this in. Note what real, well-received posts look like vs. obviously AI-generated ones. Your platform rules should come from what you observed, not what you imagine the platform wants. AI-imagined platform rules produce posts that get downvoted as slop.
+
 ## Purpose
 
 A platform hat enforces the conventions of a specific platform on top of your personal voice. LinkedIn rewards different writing than Reddit, which rewards different writing than Slack DMs. A voice hat says "sound like me." A platform hat says "and follow this platform's rules."

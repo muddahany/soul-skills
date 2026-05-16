@@ -9,6 +9,8 @@ description: Use whenever drafting text in [USER NAME]'s voice for external publ
 >
 > Once populated, remove this callout.
 
+> **Genuineness is the entire game.** This file only works if its content is GENUINELY YOURS. AI-generated samples produce an AI-flavored soul that defeats the purpose. Bring real writing or speak your thoughts via voice-to-text (Wispr Flow, macOS Dictation, Whisper). Update this file over time as you notice your voice shifting or as new examples reveal rules that were not in the original draft.
+
 ## Identity
 
 [ONE PARAGRAPH about who you are AS A WRITER. Not job title or resume. Examples of usable identity statements:
@@ -87,3 +89,14 @@ After (sounds like me):
 - Do not add fake roughness ("uhh", "lmao", typos) to fake humanity unless the Identity statement says that is the voice.
 - Do not change facts or numbers to fit the voice.
 - Do not soften critical feedback if the Writing style says "direct."
+
+## Maintaining your SOUL over time
+
+This file is not "set and forget." Voice shifts. Treat it as a living document:
+
+- When you catch yourself rewriting a Claude draft into your real voice, ASK why. The rule you applied is probably missing from this file. Add it.
+- When a sample example stops sounding like you, replace it with a more recent one.
+- When you start writing on a new platform (Reddit, Substack, podcast notes), add Examples from that surface so the soul covers that register too.
+- Speak the updates rather than type them. Voice-to-text (Wispr Flow, etc.) tends to capture more authentic phrasing than typing.
+
+A SOUL.md that is updated every few weeks beats a perfect one frozen at month zero.

@@ -2,6 +2,22 @@
 
 A practitioner's collection of [Claude Code skills](https://code.claude.com/docs/en/skills), centered on a personalized voice primitive (`soul`) that gets populated interactively from your own writing samples or an interview. Curated from a working set of 20+ skills I use daily across engineering, writing, and consulting workflows.
 
+## Why this repo exists
+
+AI-generated content is everywhere and most of it is slop. The people winning are not pure prompt-generators. They are people with genuine thoughts who use AI to structure and ship faster.
+
+This repo is for the second kind. The skills here AMPLIFY your voice. They do not replace it.
+
+You have to put effort in. Specifically:
+
+- **For SOUL:** bring REAL examples of your writing. AI-generated samples produce an AI-flavored soul that defeats the purpose. If typing is slow for you, use voice-to-text (Wispr Flow, macOS Dictation, Whisper, or anything similar) to capture raw thoughts faster than typing. Voice tends to surface authentic phrasing that typed answers smooth over.
+- **For deslop:** it catches obvious AI patterns. If you publish without running it, you publish slop.
+- **For derived hats (V2):** they only work because your SOUL is genuine. Garbage in, garbage out.
+
+Using AI to organize and structure your genuine thoughts is not laziness. That is productivity. Generating content from scratch with no human input IS laziness, and it shows. This repo is built for the first, not the second.
+
+The bar: when someone reads your output, they should think "this person has something to say and used a tool to say it well," not "this person let a tool talk for them."
+
 ## What's here
 
 | Path | Type | What it is |

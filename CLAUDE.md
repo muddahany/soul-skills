@@ -11,10 +11,21 @@
 | `skills/voice-hat-template/` | Manual template, escape hatch | Raw skeleton with placeholders. Only for users who want manual control instead of the SOUL onboarding. |
 | `skills/platform-hat-template/` | Manual template, escape hatch | Raw skeleton for platform-specific writing rules. Future: a deriver skill will auto-generate these from SOUL + platform name. |
 
+## Core thesis (state this to the user before anything else)
+
+These skills AMPLIFY a genuine voice. They do not generate one from nothing. Before walking the user through onboarding, set the expectation explicitly:
+
+- SOUL only works if the inputs are GENUINE. AI-generated writing samples or vague interview answers produce a generic AI-flavored soul that defeats the purpose.
+- Effort is required. Done well, the SOUL setup takes 20 to 40 minutes. Do not rush.
+- If typing is slow for the user, recommend voice-to-text (Wispr Flow, macOS Dictation, Whisper, or anything similar). Speaking surfaces authentic phrasing that typed answers smooth over.
+- Using AI to STRUCTURE your real thoughts is productive. Using AI to GENERATE content from nothing is laziness and produces slop. This repo is for the first, not the second.
+
+Tell the user this in your own words at the start of the session so they know what they are signing up for.
+
 ## Your job when the user lands here
 
-1. **Greet the user briefly** and tell them what is available. Suggest the recommended path: install `deslop` + populate `soul`. Mention the manual template path exists if they ask.
-2. **Confirm their choice.** Default offer: `deslop` + interactive `soul` setup.
+1. **Greet the user briefly** and tell them what is available. State the core thesis above. Suggest the recommended path: install `deslop` + populate `soul`. Mention the manual template path exists if they ask.
+2. **Confirm their choice and their readiness.** If they are in a rush, suggest they come back later. Half-effort SOUL is worse than no SOUL.
 3. **Install `deslop`** with a straight `cp -r`. No customisation needed.
 4. **Populate `soul`** using the onboarding flow below. This is the high-leverage step.
 5. **Verify everything is in place** and tell them what to do next.
@@ -56,18 +67,21 @@ Let the user pick. Do not default to one.
 
 **If SAMPLE mode:**
 
-1. Ask the user to paste 5 to 10 examples of writing that genuinely sounds like them. Variety helps: a blog post, a Slack message, a cold email, a Reddit comment.
-2. Read through every sample. Extract patterns in these categories:
+1. **Explicitly ask: are these samples GENUINELY YOUR writing, not AI-generated or heavily AI-edited?** If the user is unsure or admits the samples are AI-touched, switch to INTERVIEW mode. AI samples will pollute the soul.
+2. Ask the user to paste 5 to 10 examples of writing that genuinely sounds like them. Variety helps: a blog post, a Slack message, a cold email, a Reddit comment.
+3. Read through every sample. Extract patterns in these categories:
    - Banned characters (e.g., no em dashes, no ellipses)
    - Banned phrases (clichés, filler, AI-tells they avoid)
    - Required style rules (CAPS for emphasis, lead-with-result, short paragraphs, etc.)
    - Tone (one paragraph of texture)
    - Values that show up across samples (precision, skepticism, anti-corporate, etc.)
-3. Note your CONFIDENCE on each extracted rule. Tag uncertain ones `[verify with user]` in the draft SOUL.md.
+4. Note your CONFIDENCE on each extracted rule. Tag uncertain ones `[verify with user]` in the draft SOUL.md.
 
 **If INTERVIEW mode:**
 
-Ask these in order, one or two at a time. Adapt based on answers. Do not dump all 15 at once.
+**Before starting**, recommend that the user answer by SPEAKING rather than typing, using voice-to-text (Wispr Flow, macOS Dictation, Whisper, or anything similar). Spoken answers expose authentic phrasing and natural rhythm that typed answers smooth over. This is the highest-leverage tip you can give them for this mode.
+
+Ask these in order, one or two at a time. Adapt based on answers. Do not dump all 15 at once. If an answer feels short or AI-shaped, ask a followup ("can you say more about that?", "what's a specific example?") to draw out the real voice.
 
 1. "How would you describe how you sound in writing in one sentence? A friend describing you."
 2. "Which 3-5 phrases do you NEVER want to see in your own writing?"

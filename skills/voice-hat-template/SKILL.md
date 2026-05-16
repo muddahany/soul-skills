@@ -9,6 +9,8 @@ description: TEMPLATE skill. Copy this folder, rename it to YOUR-voice-hat (or s
 >
 > Replace every `<<PLACEHOLDER>>` below with your own rules before using. Delete this callout when you do.
 
+> **Genuineness check.** If you fill this in based on what you THINK you sound like rather than what your actual writing shows, the hat will misfire. Spend 30 minutes re-reading your own old writing first. Better: speak your rules out loud via voice-to-text (Wispr Flow, etc.) and let your actual phrasing surface the rules. AI-imagined rules produce an AI-flavored hat.
+
 ## Purpose
 
 A voice hat enforces YOUR personal writing rules whenever Claude drafts text in your voice. Without one, Claude defaults to a corporate, hedged, em-dash-heavy register that does not sound like any real person. The hat makes sure the output sounds like YOU.

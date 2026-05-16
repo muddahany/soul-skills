@@ -11,6 +11,8 @@ AI-generated text has fingerprints. Most are not em-dashes. The 2026 generation 
 
 **Core principle:** A draft passes deslop when a reader cannot easily say "this was assembled by an LLM" from rhythm, vocabulary, and tone alone, even before reading for content.
 
+This skill is the GATE between AI-assisted writing and slop. If you generated content from scratch with no real input, deslop will not save you. If you spoke or wrote your genuine thoughts and used AI to structure them, deslop catches the residue so what you publish sounds like you.
+
 This is the UNIVERSAL pass for any text draft. Layer platform-specific skills on top for Reddit, LinkedIn, or your own personal voice rules.
 
 Pattern catalog adapted from `conorbronsdon/avoid-ai-writing` with 2026 additions.
