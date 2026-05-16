@@ -1,11 +1,11 @@
 ---
 name: soul
-description: Use whenever drafting any external-facing text in the user's personal voice. ALWAYS load when the user is composing emails, social posts, proposals, comments, profile bios, cover letters, replies, DMs, README files, or any author-attributed writing. Trigger on requests like "write a post about X", "draft an email", "help me reply", "write in my voice", "compose this", "as me", or any first-person writing task. Encodes the user's voice rules, banned phrases, required style, and values that shape voice. MUST be populated via the interactive onboarding in claude-code-skills/CLAUDE.md before it works; until populated, this skill should remind the user to run the onboarding flow.
+description: Use whenever drafting any external-facing text in the user's personal voice. ALWAYS load when the user is composing emails, social posts, proposals, comments, profile bios, cover letters, replies, DMs, README files, or any author-attributed writing. Trigger on requests like "write a post about X", "draft an email", "help me reply", "write in my voice", "compose this", "as me", or any first-person writing task. Encodes the user's voice rules, banned phrases, required style, and values that shape voice. MUST be populated via the interactive onboarding in soul-skills/CLAUDE.md before it works; until populated, this skill should remind the user to run the onboarding flow.
 ---
 
 # Soul
 
-> **NOT YET POPULATED.** This file is the template structure. To fill it in, point your Claude Code at the onboarding flow at the root of the claude-code-skills repo. Claude will ask you to share writing samples and/or answer questions, then draft a populated version of this file for you to review.
+> **NOT YET POPULATED.** This file is the template structure. To fill it in, point your Claude Code at the onboarding flow at the root of the soul-skills repo. Claude will ask you to share writing samples and/or answer questions, then draft a populated version of this file for you to review.
 >
 > Once populated, remove this callout.
 

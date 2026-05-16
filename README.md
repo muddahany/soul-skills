@@ -1,6 +1,6 @@
-# Claude Code Skills
+# Soul Skills
 
-A practitioner's collection of [Claude Code skills](https://code.claude.com/docs/en/skills), centered on a personalized voice primitive (`soul`) that gets populated interactively from your own writing samples or an interview. Curated from a working set of 20+ skills I use daily across engineering, writing, and consulting workflows.
+A practitioner's collection of [Claude Code skills](https://code.claude.com/docs/en/skills), centered on a personalized voice primitive (`soul`) that gets populated interactively from your own writing samples or an interview. Built to AMPLIFY your genuine voice, not generate fake voice. Curated from a working set of 20+ skills I use daily across engineering, writing, and consulting workflows.
 
 ## Why this repo exists
 
@@ -37,8 +37,8 @@ There are three install paths, in order of recommendation.
 This is the highest-value path because it includes the interactive SOUL onboarding (sample mode, interview mode, or hybrid). You cannot get this through plugin install.
 
 ```bash
-git clone https://github.com/muddahany/claude-code-skills.git
-cd claude-code-skills
+git clone https://github.com/muddahany/soul-skills.git
+cd soul-skills
 claude
 ```
 
@@ -59,8 +59,8 @@ Say "set this up for me" once Claude opens.
 Fastest path if you only want `deslop` and the bare templates (skip the SOUL onboarding).
 
 ```
-/plugin marketplace add muddahany/claude-code-skills
-/plugin install deslop@muddahany-skills
+/plugin marketplace add muddahany/soul-skills
+/plugin install deslop@soul-skills
 ```
 
 Available plugins: `deslop`, `soul`, `platform-hat-deriver`, `voice-hat-template`, `platform-hat-template`.
@@ -72,11 +72,11 @@ If you install `soul` this way, it lands UNPOPULATED. You will need to fill it i
 If you do not want plugins or the onboarding:
 
 ```bash
-git clone https://github.com/muddahany/claude-code-skills.git
+git clone https://github.com/muddahany/soul-skills.git
 mkdir -p ~/.claude/skills
-cp -r claude-code-skills/skills/deslop ~/.claude/skills/
-cp -r claude-code-skills/skills/voice-hat-template ~/.claude/skills/
-cp -r claude-code-skills/skills/platform-hat-template ~/.claude/skills/
+cp -r soul-skills/skills/deslop ~/.claude/skills/
+cp -r soul-skills/skills/voice-hat-template ~/.claude/skills/
+cp -r soul-skills/skills/platform-hat-template ~/.claude/skills/
 ```
 
 Then edit each `SKILL.md` to fill in the `<<PLACEHOLDER>>` markers and rename the folders to your preference.

@@ -1,6 +1,6 @@
 ---
 name: voice-hat-template
-description: MANUAL TEMPLATE only. Recommended path is the SOUL primitive via interactive onboarding (see claude-code-skills/CLAUDE.md). Use this skill only when the user explicitly wants to write their own voice rules by hand without running the SOUL onboarding. Triggers on phrases like "show me the template", "skip the onboarding", "I want to fill in voice rules manually", or "I already know my voice rules". Once copied and renamed, the user must replace every <<PLACEHOLDER>> with their actual rules.
+description: MANUAL TEMPLATE only. Recommended path is the SOUL primitive via interactive onboarding (see soul-skills/CLAUDE.md). Use this skill only when the user explicitly wants to write their own voice rules by hand without running the SOUL onboarding. Triggers on phrases like "show me the template", "skip the onboarding", "I want to fill in voice rules manually", or "I already know my voice rules". Once copied and renamed, the user must replace every <<PLACEHOLDER>> with their actual rules.
 ---
 
 # Voice Hat Template

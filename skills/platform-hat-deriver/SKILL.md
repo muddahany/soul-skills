@@ -1,6 +1,6 @@
 ---
 name: platform-hat-deriver
-description: Use to AUTOMATICALLY generate a platform-specific writing hat from the user's populated SOUL primitive plus a platform name. Trigger on requests like "create a LinkedIn hat", "make me a Reddit hat", "derive a platform hat for Slack", "build a Twitter writing skill", "I need a Discord hat", "generate a platform-specific voice for [X]". Built-in reference covers LinkedIn, Reddit, Slack, Twitter/X, Discord, GitHub, Substack, and email syntax (public facts, no user input needed). Only the personal/contextual rules (failure modes per the user's audience, tone overlay, samples) are asked. REQUIRES SOUL to be populated first; if not, point the user at the SOUL onboarding in claude-code-skills/CLAUDE.md. One run produces one hat. Run the skill again for additional platforms. This is the recommended path over the manual platform-hat-template.
+description: Use to AUTOMATICALLY generate a platform-specific writing hat from the user's populated SOUL primitive plus a platform name. Trigger on requests like "create a LinkedIn hat", "make me a Reddit hat", "derive a platform hat for Slack", "build a Twitter writing skill", "I need a Discord hat", "generate a platform-specific voice for [X]". Built-in reference covers LinkedIn, Reddit, Slack, Twitter/X, Discord, GitHub, Substack, and email syntax (public facts, no user input needed). Only the personal/contextual rules (failure modes per the user's audience, tone overlay, samples) are asked. REQUIRES SOUL to be populated first; if not, point the user at the SOUL onboarding in soul-skills/CLAUDE.md. One run produces one hat. Run the skill again for additional platforms. This is the recommended path over the manual platform-hat-template.
 ---
 
 # Platform Hat Deriver
@@ -18,7 +18,7 @@ Before doing anything else, verify SOUL exists and is populated.
 1. Check `~/.claude/skills/soul/SKILL.md` exists.
 2. Open the file. Confirm it does NOT contain the "NOT YET POPULATED" callout.
 3. Confirm the Identity, Voice rules, Writing style, and Values sections have real content, not placeholders.
-4. If any check fails, STOP. Tell the user: "Your SOUL is not populated yet. Run the SOUL onboarding first (see claude-code-skills/CLAUDE.md) before deriving platform hats. A platform hat derived from an empty SOUL would inherit garbage."
+4. If any check fails, STOP. Tell the user: "Your SOUL is not populated yet. Run the SOUL onboarding first (see soul-skills/CLAUDE.md) before deriving platform hats. A platform hat derived from an empty SOUL would inherit garbage."
 5. Do not proceed until SOUL is verified populated.
 
 ## Workflow
