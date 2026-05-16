@@ -69,10 +69,6 @@ This repo is curated, not a dumping ground. Universal skills and templates only,
 
 See [CHANGELOG.md](./CHANGELOG.md).
 
-## Further reading
-
-[Lessons from building 20+ Claude Code skills](./docs/lessons.md).
-
 ## License
 
 MIT. See [LICENSE](./LICENSE).
