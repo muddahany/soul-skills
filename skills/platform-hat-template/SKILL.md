@@ -5,7 +5,9 @@ description: TEMPLATE skill. Copy this folder, rename it to PLATFORM-hat (e.g., 
 
 # Platform Hat Template
 
-> **READ THIS FIRST.** This is a skeleton, not a working skill. Replace every `<<PLACEHOLDER>>` below with rules specific to the platform you are writing for. Delete this callout when you do.
+> **ESCAPE HATCH FOR POWER USERS.** Once `soul` exists in your skills folder, a future version of this repo will offer a platform-hat-deriver skill that generates platform hats automatically from your SOUL plus a platform name. Use this template only if you want raw manual control or are building a hat before the deriver lands.
+>
+> Replace every `<<PLACEHOLDER>>` below with rules specific to the platform you are writing for. Delete this callout when you do.
 
 ## Purpose
 

@@ -1,22 +1,29 @@
 # Claude Code Skills
 
-A practitioner's collection of [Claude Code skills](https://code.claude.com/docs/en/skills) plus reusable templates for building your own. Curated from a working set of 20+ skills I use daily across engineering, writing, and consulting workflows.
+A practitioner's collection of [Claude Code skills](https://code.claude.com/docs/en/skills), centered on a personalized voice primitive (`soul`) that gets populated interactively from your own writing samples or an interview. Curated from a working set of 20+ skills I use daily across engineering, writing, and consulting workflows.
 
 ## What's here
 
-| Path | Type | Purpose |
+| Path | Type | What it is |
 |---|---|---|
-| `skills/deslop/` | Concrete skill | Universal pass for catching AI-generated tells in text drafts before publishing |
-| `skills/voice-hat-template/` | Template | Skeleton for encoding YOUR voice rules into an invocable skill |
-| `skills/platform-hat-template/` | Template | Skeleton for platform-specific writing voices (LinkedIn, Reddit, Slack, etc.) |
-
-More templates and concrete skills will land here as they get cleaned up for public release.
+| `skills/deslop/` | Universal skill | Catches AI-generated tells in any text draft. Install as-is. |
+| `skills/soul/` | Personalized skill, populated by Claude | Encodes YOUR voice, writing style, and values that shape your voice. The recommended core skill. |
+| `skills/voice-hat-template/` | Manual template (escape hatch) | Raw skeleton if you prefer to write your own voice rules without an interactive interview. |
+| `skills/platform-hat-template/` | Manual template (escape hatch) | Raw skeleton for platform-specific writing rules. A `platform-hat-deriver` is planned for V2. |
 
 ## How to use
 
-### Easiest path: let Claude install for you
+### Recommended: let Claude install and populate for you
 
-Clone this repo, open Claude Code in the directory, and Claude will auto-read [`CLAUDE.md`](./CLAUDE.md) and walk you through installing the skills. The onboarding file tells Claude exactly which questions to ask, which directories to copy, and how to help you fill in the templates.
+Clone this repo, open Claude Code in the directory, and Claude will auto-read [`CLAUDE.md`](./CLAUDE.md) and walk you through:
+
+1. Installing `deslop` (one command, no customisation).
+2. Setting up `soul` interactively. You pick one of three modes:
+   - **Sample mode** — paste 5 to 10 examples of your real writing. Claude extracts patterns.
+   - **Interview mode** — Claude asks 10 to 15 questions about how you write.
+   - **Hybrid** — sample first, interview to fill gaps. Recommended.
+3. Reviewing and approving the populated `soul/SKILL.md`.
+4. Installing it to `~/.claude/skills/soul/`.
 
 ```bash
 git clone https://github.com/muddahany/claude-code-skills.git
@@ -24,22 +31,40 @@ cd claude-code-skills
 claude
 ```
 
-Then say "install these skills for me" or just describe what you want.
+Then say "set this up for me" or just describe what you want. The onboarding file does the rest.
 
-### Manual install
+### Manual install (for power users)
 
-1. Clone or copy a skill directory into your local `~/.claude/skills/` folder.
-2. Open the `SKILL.md` and adjust the `description` frontmatter so Claude knows when to load it.
-3. If it is a template, fill in the placeholders with YOUR voice rules, banned phrases, or platform conventions.
-4. Restart Claude Code or use the `Skill` tool to invoke it.
+If you'd rather write your voice rules by hand:
+
+```bash
+mkdir -p ~/.claude/skills
+cp -r skills/deslop ~/.claude/skills/
+cp -r skills/voice-hat-template ~/.claude/skills/
+cp -r skills/platform-hat-template ~/.claude/skills/
+```
+
+Then edit each `SKILL.md` to fill in the `<<PLACEHOLDER>>` markers and rename the folders to your preference.
 
 Skills load into your CURRENT Claude Code context. They are not subagents. For when to use one vs the other, see the [Claude Code subagents docs](https://code.claude.com/docs/en/subagents) and the lessons below.
 
-## Why templates instead of the original skills
+## Why `soul` instead of hardcoded voice skills
 
-Most of my skills encode MY voice (specific banned phrases, a personal blocklist of AI tells, a particular tone). Publishing them as-is would make other people sound like me, which is not useful for them. The templates here are voice-agnostic skeletons. You bring the rules, the skeleton enforces them.
+Most published voice skills encode the AUTHOR's voice. Installing them makes you sound like that author, which is not what you want. The `soul` primitive flips that: it ships as a STRUCTURE, and Claude populates it from YOUR writing or YOUR answers. Same skill file shape, completely different content per user.
 
-The one concrete skill that IS publishable as-is is `deslop`, because the AI-tell catalog (sentence rhythm, vocabulary clusters, structural patterns) is universal across writers.
+The downstream benefit: platform-specific hats (LinkedIn, Reddit, Slack, etc.) can be DERIVED from your `soul` plus the platform's conventions. One personalized source of truth, many platform-tuned outputs. The deriver is planned for V2 of this repo.
+
+## What goes in `soul`
+
+The populated `soul/SKILL.md` has these sections:
+
+- **Identity** — one paragraph about who you are as a writer.
+- **Voice rules** — banned characters, banned phrases, required style rules.
+- **Writing style** — 1 to 2 paragraphs of tone.
+- **Values that shape voice** — 3 to 7 values that genuinely change how you write (precision over politeness, numbers when you have them, etc.).
+- **Examples** — before/after pairs showing AI-generic vs. your voice.
+
+Target length: 50 to 80 lines. Tight enough to load on every voice-related conversation without bloating context.
 
 ## Lessons from building 20+ skills
 
@@ -68,7 +93,7 @@ If a skill grows past ~300 lines, consider splitting it. Long skills bloat every
 
 ### Voice skills compound
 
-If you use Claude for ANY public-facing writing (emails, posts, proposals, README files), a personal voice skill pays for itself within a week. The voice rules in this repo's templates exist because LLMs default to a corporate, hedged, em-dash-heavy register that does not sound like any real person.
+If you use Claude for ANY public-facing writing (emails, posts, proposals, README files), a personalised voice skill pays for itself within a week. The default LLM register (corporate, hedged, em-dash-heavy) does not sound like any real person.
 
 ### Test the negative case
 
@@ -76,11 +101,11 @@ When writing a skill, also write down what the skill should NOT trigger on. Then
 
 ### Layer skills, don't merge them
 
-I have a universal `deslop` skill for general AI-tells AND a `reddit-deslop` skill that adds Reddit-specific failure modes (over-formatted, opening with "TL;DR", etc.). They compose. One mega-skill would be worse than two focused skills you can invoke together.
+I have a universal `deslop` skill for general AI-tells AND a personalised `soul` for voice. They compose. One mega-skill would be worse than two focused skills you can invoke together.
 
 ## Contributing
 
-If you build a template you think belongs here, open a PR. Templates only, no personalized voice rules. The bar is: useful to anyone trying to build a similar skill, not just useful to me.
+If you build a generic template or universal skill you think belongs here, open a PR. Personal voice skills do not belong in this repo. The bar is: useful to anyone trying to build a similar skill, not just useful to you.
 
 ## License
 

@@ -5,7 +5,9 @@ description: TEMPLATE skill. Copy this folder, rename it to YOUR-voice-hat (or s
 
 # Voice Hat Template
 
-> **READ THIS FIRST.** This is a skeleton, not a working skill. Replace every `<<PLACEHOLDER>>` below with your own rules before using. Delete this callout when you do.
+> **ESCAPE HATCH FOR POWER USERS.** The recommended path is `soul` (interactive populate via the repo's onboarding flow), not this template. Use this file only if you want raw manual control over your voice rules or already know them by heart.
+>
+> Replace every `<<PLACEHOLDER>>` below with your own rules before using. Delete this callout when you do.
 
 ## Purpose
 
