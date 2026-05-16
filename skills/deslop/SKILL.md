@@ -1,6 +1,6 @@
 ---
 name: deslop
-description: Use when reviewing any text draft for AI-generated tells before publishing. Catches vocabulary, structural rhythm, and tone patterns that signal AI authorship across blog posts, emails, social posts, documentation, and proposals. Platform-agnostic; layer platform-specific deslop skills on top for Reddit, LinkedIn, etc.
+description: Use AGGRESSIVELY before publishing any text drafted or polished with AI help. Catches AI-tells across structural rhythm (sentence-length uniformity, list-of-three patterns), vocabulary (delve, leverage, robust, paradigm, seamless, etc.), copula avoidance, template phrases, and tone red flags. Trigger whenever the user is about to publish, send, post, share, or finalize AI-assisted content of any kind: blog posts, emails, cold outreach, LinkedIn, Reddit, Twitter, Slack, documentation, proposals, cover letters, comments. Also trigger on requests like "check this draft", "does this sound AI", "before I post", "review this", "polish this". Always offer to run this before content leaves the conversation. Platform-agnostic; layer platform-specific deslop on top if available.
 ---
 
 # Deslop

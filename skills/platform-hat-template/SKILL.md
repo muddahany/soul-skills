@@ -1,6 +1,6 @@
 ---
 name: platform-hat-template
-description: TEMPLATE skill. Copy this folder, rename it to PLATFORM-hat (e.g., linkedin-hat, reddit-hat, slack-hat), then fill in the placeholders below to encode the writing conventions of that platform. Layered on top of a personal voice hat. Triggers when drafting content for that specific platform.
+description: MANUAL TEMPLATE only for platform-specific writing rules. Use when the user wants to manually encode the writing conventions of a specific platform (LinkedIn, Reddit, Slack, Discord, Twitter/X, Upwork, GitHub, etc.) without waiting for the V2 platform-hat-deriver that will auto-generate these from SOUL. Triggers on phrases like "create a LinkedIn hat", "platform-specific voice rules", "Reddit writing rules", "Slack tone overlay", "Twitter format hat". Once copied and renamed, the user must replace every <<PLACEHOLDER>> with platform-specific rules. Layered on top of a personal voice hat or SOUL.
 ---
 
 # Platform Hat Template

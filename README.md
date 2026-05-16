@@ -29,17 +29,11 @@ The bar: when someone reads your output, they should think "this person has some
 
 ## How to use
 
-### Recommended: let Claude install and populate for you
+There are three install paths, in order of recommendation.
 
-Clone this repo, open Claude Code in the directory, and Claude will auto-read [`CLAUDE.md`](./CLAUDE.md) and walk you through:
+### Path 1 (recommended): clone and let Claude populate SOUL interactively
 
-1. Installing `deslop` (one command, no customisation).
-2. Setting up `soul` interactively. You pick one of three modes:
-   - **Sample mode** — paste 5 to 10 examples of your real writing. Claude extracts patterns.
-   - **Interview mode** — Claude asks 10 to 15 questions about how you write.
-   - **Hybrid** — sample first, interview to fill gaps. Recommended.
-3. Reviewing and approving the populated `soul/SKILL.md`.
-4. Installing it to `~/.claude/skills/soul/`.
+This is the highest-value path because it includes the interactive SOUL onboarding (sample mode, interview mode, or hybrid). You cannot get this through plugin install.
 
 ```bash
 git clone https://github.com/muddahany/claude-code-skills.git
@@ -47,17 +41,41 @@ cd claude-code-skills
 claude
 ```
 
-Then say "set this up for me" or just describe what you want. The onboarding file does the rest.
+Claude auto-reads [`CLAUDE.md`](./CLAUDE.md) and walks you through:
 
-### Manual install (for power users)
+1. Installing `deslop` (one command, no customisation).
+2. Setting up `soul` interactively. You pick one of three modes:
+   - **Sample mode** — paste 5 to 10 examples of your real writing. Claude extracts patterns.
+   - **Interview mode** — Claude asks 10 to 15 questions. Voice-to-text recommended (Wispr Flow, Whisper, macOS Dictation).
+   - **Hybrid** — sample first, interview to fill gaps.
+3. Reviewing and approving the populated `soul/SKILL.md`.
+4. Installing it to `~/.claude/skills/soul/`.
 
-If you'd rather write your voice rules by hand:
+Say "set this up for me" once Claude opens.
+
+### Path 2: Claude Code plugin marketplace install
+
+Fastest path if you only want `deslop` and the bare templates (skip the SOUL onboarding).
+
+```
+/plugin marketplace add muddahany/claude-code-skills
+/plugin install deslop@muddahany-skills
+```
+
+Available plugins: `deslop`, `soul`, `voice-hat-template`, `platform-hat-template`.
+
+If you install `soul` this way, it lands UNPOPULATED. You will need to fill it in manually or run the onboarding from Path 1 afterwards.
+
+### Path 3: manual `cp -r` (for power users)
+
+If you do not want plugins or the onboarding:
 
 ```bash
+git clone https://github.com/muddahany/claude-code-skills.git
 mkdir -p ~/.claude/skills
-cp -r skills/deslop ~/.claude/skills/
-cp -r skills/voice-hat-template ~/.claude/skills/
-cp -r skills/platform-hat-template ~/.claude/skills/
+cp -r claude-code-skills/skills/deslop ~/.claude/skills/
+cp -r claude-code-skills/skills/voice-hat-template ~/.claude/skills/
+cp -r claude-code-skills/skills/platform-hat-template ~/.claude/skills/
 ```
 
 Then edit each `SKILL.md` to fill in the `<<PLACEHOLDER>>` markers and rename the folders to your preference.
@@ -121,7 +139,7 @@ I have a universal `deslop` skill for general AI-tells AND a personalised `soul`
 
 ## Contributing
 
-If you build a generic template or universal skill you think belongs here, open a PR. Personal voice skills do not belong in this repo. The bar is: useful to anyone trying to build a similar skill, not just useful to you.
+This repo is curated, not a dumping ground. See [CONTRIBUTING.md](./CONTRIBUTING.md) for the bar, the do/do-not list, and the quality checklist for new skills. TL;DR: universal skills and templates only, no personal voice rules, follow Anthropic's frontmatter guidance, use [`template/SKILL.md`](./template/SKILL.md) as the starting point.
 
 ## License
 

@@ -1,0 +1,49 @@
+{
+  "name": "muddahany-skills",
+  "owner": {
+    "name": "Mohamed ShehabEldin",
+    "email": "moh94hany@gmail.com"
+  },
+  "metadata": {
+    "description": "Claude Code skills built to AMPLIFY genuine voice, not generate fake voice. Anchored by SOUL, a personalized voice primitive populated interactively from your own writing samples or an interview.",
+    "version": "0.1.0"
+  },
+  "plugins": [
+    {
+      "name": "deslop",
+      "description": "Universal pass for catching AI-generated tells in any text draft before publishing. Catches structural rhythm uniformity, AI-flavored vocabulary, copula avoidance, template phrases, and tone red flags.",
+      "source": "./",
+      "strict": false,
+      "skills": [
+        "./skills/deslop"
+      ]
+    },
+    {
+      "name": "platform-hat-template",
+      "description": "Manual escape-hatch template for platform-specific writing rules (LinkedIn, Reddit, Slack, etc.). Use only when manual control is preferred over the future SOUL-derived hats.",
+      "source": "./",
+      "strict": false,
+      "skills": [
+        "./skills/platform-hat-template"
+      ]
+    },
+    {
+      "name": "soul",
+      "description": "Personalized voice primitive. Ships as an unpopulated template. For best results, clone the repo and follow CLAUDE.md for the interactive onboarding flow (sample mode, interview mode, or hybrid). Plugin install just drops the unpopulated template, which the user then has to fill in manually.",
+      "source": "./",
+      "strict": false,
+      "skills": [
+        "./skills/soul"
+      ]
+    },
+    {
+      "name": "voice-hat-template",
+      "description": "Manual escape-hatch template for users who want to write their own voice rules without the SOUL interactive onboarding.",
+      "source": "./",
+      "strict": false,
+      "skills": [
+        "./skills/voice-hat-template"
+      ]
+    }
+  ]
+}

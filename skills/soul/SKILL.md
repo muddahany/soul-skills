@@ -1,6 +1,6 @@
 ---
 name: soul
-description: Use whenever drafting text in [USER NAME]'s voice for external publication (emails, posts, proposals, comments, profile copy, anything where author voice matters). Encodes the user's voice rules, writing style, and values that shape voice. Populated via the onboarding flow in claude-code-skills/CLAUDE.md, not by hand.
+description: Use whenever drafting any external-facing text in the user's personal voice. ALWAYS load when the user is composing emails, social posts, proposals, comments, profile bios, cover letters, replies, DMs, README files, or any author-attributed writing. Trigger on requests like "write a post about X", "draft an email", "help me reply", "write in my voice", "compose this", "as me", or any first-person writing task. Encodes the user's voice rules, banned phrases, required style, and values that shape voice. MUST be populated via the interactive onboarding in claude-code-skills/CLAUDE.md before it works; until populated, this skill should remind the user to run the onboarding flow.
 ---
 
 # Soul

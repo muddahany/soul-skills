@@ -30,6 +30,13 @@ Tell the user this in your own words at the start of the session so they know wh
 4. **Populate `soul`** using the onboarding flow below. This is the high-leverage step.
 5. **Verify everything is in place** and tell them what to do next.
 
+## Two install methods
+
+You have two ways to install `deslop` and the templates:
+
+1. **Plugin marketplace** (cleanest if Claude Code supports it for the user). Tell the user they can run `/plugin marketplace add muddahany/claude-code-skills` then `/plugin install deslop@muddahany-skills` (and similarly for `voice-hat-template`, `platform-hat-template`). Only use this for the non-SOUL skills, because SOUL needs the interactive onboarding flow below.
+2. **Direct cp -r from the cloned repo**. Use this for SOUL (which you populate interactively before installing) and as a fallback if plugin marketplace install does not work.
+
 ## Standard install location
 
 - macOS / Linux: `~/.claude/skills/`
