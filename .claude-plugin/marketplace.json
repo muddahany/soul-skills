@@ -19,8 +19,17 @@
       ]
     },
     {
+      "name": "platform-hat-deriver",
+      "description": "Meta-skill that auto-generates platform-specific writing hats from a populated SOUL plus a platform name. Run once per platform. Requires SOUL to be populated first.",
+      "source": "./",
+      "strict": false,
+      "skills": [
+        "./skills/platform-hat-deriver"
+      ]
+    },
+    {
       "name": "platform-hat-template",
-      "description": "Manual escape-hatch template for platform-specific writing rules (LinkedIn, Reddit, Slack, etc.). Use only when manual control is preferred over the future SOUL-derived hats.",
+      "description": "Manual escape-hatch template for platform-specific writing rules. Most users should prefer platform-hat-deriver for automatic generation from SOUL.",
       "source": "./",
       "strict": false,
       "skills": [

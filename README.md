@@ -12,7 +12,7 @@ You have to put effort in. Specifically:
 
 - **For SOUL:** bring REAL examples of your writing. AI-generated samples produce an AI-flavored soul that defeats the purpose. If typing is slow for you, use voice-to-text (Wispr Flow, macOS Dictation, Whisper, or anything similar) to capture raw thoughts faster than typing. Voice tends to surface authentic phrasing that typed answers smooth over.
 - **For deslop:** it catches obvious AI patterns. If you publish without running it, you publish slop.
-- **For derived hats (V2):** they only work because your SOUL is genuine. Garbage in, garbage out.
+- **For derived hats:** they only work because your SOUL is genuine. Garbage in, garbage out.
 
 Using AI to organize and structure your genuine thoughts is not laziness. That is productivity. Generating content from scratch with no human input IS laziness, and it shows. This repo is built for the first, not the second.
 
@@ -24,8 +24,9 @@ The bar: when someone reads your output, they should think "this person has some
 |---|---|---|
 | `skills/deslop/` | Universal skill | Catches AI-generated tells in any text draft. Install as-is. |
 | `skills/soul/` | Personalized skill, populated by Claude | Encodes YOUR voice, writing style, and values that shape your voice. The recommended core skill. |
-| `skills/voice-hat-template/` | Manual template (escape hatch) | Raw skeleton if you prefer to write your own voice rules without an interactive interview. |
-| `skills/platform-hat-template/` | Manual template (escape hatch) | Raw skeleton for platform-specific writing rules. A `platform-hat-deriver` is planned for V2. |
+| `skills/platform-hat-deriver/` | Meta-skill | Auto-generates platform-specific hats (LinkedIn, Reddit, Slack, etc.) from your populated SOUL. Run once per platform. |
+| `skills/voice-hat-template/` | Manual template (escape hatch) | Raw skeleton if you prefer to write your own voice rules without the SOUL interactive interview. |
+| `skills/platform-hat-template/` | Manual template (escape hatch) | Raw skeleton for platform rules. Most users should prefer `platform-hat-deriver`. |
 
 ## How to use
 
@@ -62,7 +63,7 @@ Fastest path if you only want `deslop` and the bare templates (skip the SOUL onb
 /plugin install deslop@muddahany-skills
 ```
 
-Available plugins: `deslop`, `soul`, `voice-hat-template`, `platform-hat-template`.
+Available plugins: `deslop`, `soul`, `platform-hat-deriver`, `voice-hat-template`, `platform-hat-template`.
 
 If you install `soul` this way, it lands UNPOPULATED. You will need to fill it in manually or run the onboarding from Path 1 afterwards.
 
@@ -86,7 +87,7 @@ Skills load into your CURRENT Claude Code context. They are not subagents. For w
 
 Most published voice skills encode the AUTHOR's voice. Installing them makes you sound like that author, which is not what you want. The `soul` primitive flips that: it ships as a STRUCTURE, and Claude populates it from YOUR writing or YOUR answers. Same skill file shape, completely different content per user.
 
-The downstream benefit: platform-specific hats (LinkedIn, Reddit, Slack, etc.) can be DERIVED from your `soul` plus the platform's conventions. One personalized source of truth, many platform-tuned outputs. The deriver is planned for V2 of this repo.
+The downstream benefit: platform-specific hats (LinkedIn, Reddit, Slack, etc.) get DERIVED from your `soul` plus the platform's conventions using the `platform-hat-deriver` skill. One personalized source of truth, many platform-tuned outputs. Each derived hat is a thin delta on top of SOUL, so updates to your SOUL propagate.
 
 ## What goes in `soul`
 

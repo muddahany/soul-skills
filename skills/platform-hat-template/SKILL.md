@@ -1,11 +1,11 @@
 ---
 name: platform-hat-template
-description: MANUAL TEMPLATE only for platform-specific writing rules. Use when the user wants to manually encode the writing conventions of a specific platform (LinkedIn, Reddit, Slack, Discord, Twitter/X, Upwork, GitHub, etc.) without waiting for the V2 platform-hat-deriver that will auto-generate these from SOUL. Triggers on phrases like "create a LinkedIn hat", "platform-specific voice rules", "Reddit writing rules", "Slack tone overlay", "Twitter format hat". Once copied and renamed, the user must replace every <<PLACEHOLDER>> with platform-specific rules. Layered on top of a personal voice hat or SOUL.
+description: MANUAL TEMPLATE only for platform-specific writing rules. Most users should prefer the `platform-hat-deriver` skill which auto-generates platform hats from a populated SOUL. Use this template ONLY when the user wants raw manual control over every line of a platform hat (LinkedIn, Reddit, Slack, Discord, Twitter/X, Upwork, GitHub, etc.). Triggers on phrases like "give me the manual template", "I want to fill in platform rules myself", or "skip the deriver". Once copied and renamed, the user must replace every <<PLACEHOLDER>> with platform-specific rules. Layered on top of SOUL or a personal voice hat.
 ---
 
 # Platform Hat Template
 
-> **ESCAPE HATCH FOR POWER USERS.** Once `soul` exists in your skills folder, a future version of this repo will offer a platform-hat-deriver skill that generates platform hats automatically from your SOUL plus a platform name. Use this template only if you want raw manual control or are building a hat before the deriver lands.
+> **ESCAPE HATCH FOR POWER USERS.** Most users should prefer the `platform-hat-deriver` skill instead. The deriver reads your populated SOUL, asks you 4 to 6 platform-specific questions, and auto-generates a hat that references SOUL as its base voice. This template is for users who want raw manual control over every line.
 >
 > Replace every `<<PLACEHOLDER>>` below with rules specific to the platform you are writing for. Delete this callout when you do.
 

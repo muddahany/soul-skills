@@ -8,8 +8,9 @@
 |---|---|---|
 | `skills/deslop/` | Universal skill | Catches AI-generated tells in any text draft. Install as-is. |
 | `skills/soul/` | Personalized skill, populated via onboarding | Encodes the user's personal voice, writing style, and values that shape voice. Drives all "write as me" use cases. **Recommended core skill.** |
+| `skills/platform-hat-deriver/` | Meta-skill | Auto-generates platform-specific hats (LinkedIn, Reddit, Slack, etc.) from a populated SOUL plus a platform name. Run once per platform. |
 | `skills/voice-hat-template/` | Manual template, escape hatch | Raw skeleton with placeholders. Only for users who want manual control instead of the SOUL onboarding. |
-| `skills/platform-hat-template/` | Manual template, escape hatch | Raw skeleton for platform-specific writing rules. Future: a deriver skill will auto-generate these from SOUL + platform name. |
+| `skills/platform-hat-template/` | Manual template, escape hatch | Raw skeleton for platform rules. Most users should prefer `platform-hat-deriver`. |
 
 ## Core thesis (state this to the user before anything else)
 
@@ -156,6 +157,29 @@ cp -r skills/platform-hat-template ~/.claude/skills/
 
 Then tell them: open each `SKILL.md`, replace every `<<PLACEHOLDER>>`, rename the folder, and delete the "ESCAPE HATCH" callout. No further help unless they ask.
 
+## After SOUL is installed: offer to derive a platform hat
+
+Once SOUL is populated and installed, immediately offer the next high-value step:
+
+> "Your SOUL is set up. If you write on specific platforms (LinkedIn, Reddit, Slack, etc.) and want a hat tuned to each, I can derive one now using the `platform-hat-deriver` skill. One platform at a time. Want to do that?"
+
+If the user says yes:
+
+1. Install `platform-hat-deriver` first if it is not already installed:
+   ```bash
+   cp -r skills/platform-hat-deriver ~/.claude/skills/
+   ```
+2. Then invoke the deriver's workflow inline (the full instructions live in `skills/platform-hat-deriver/SKILL.md`). It will:
+   - Verify SOUL is populated.
+   - Ask the user which platform.
+   - Ask 4 to 6 platform-specific questions.
+   - Draft a `<platform>-hat/SKILL.md`.
+   - Show the draft for review.
+   - Install on approval.
+3. After the first hat is installed and validated, ask if the user wants another platform. ONE AT A TIME, never batch.
+
+If the user declines, skip and continue to the "After install" section below.
+
 ## After install
 
 Tell the user:
@@ -164,13 +188,14 @@ Tell the user:
 2. The `description:` field in the frontmatter is what auto-triggers the skill. Customise it if needed.
 3. They can invoke any skill manually with the `Skill` tool or `/<skill-name>` (depending on Claude Code version).
 4. For `soul`: the more they iterate on the file over time, the better it gets. Add new examples whenever a particular phrasing feels right or wrong.
+5. For derived platform hats: re-run `platform-hat-deriver` any time they want a new one. Each hat is a delta on SOUL, so SOUL updates propagate automatically.
 
 ## Do not
 
 - Do not push or commit anything back to this repo without explicit user permission.
 - Do not run SOUL onboarding without asking the user which mode they want.
 - Do not paste user samples into anywhere except their Claude Code session.
-- Do not auto-generate platform hats during onboarding. The deriver is V2.
+- Do not batch-generate platform hats. One platform at a time so the user can validate each. The deriver supports this; do not bypass it.
 - Do not assume the user wants all skills installed. Confirm first.
 
 ## If something goes wrong
