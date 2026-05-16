@@ -58,12 +58,16 @@ Say "set this up for me" once Claude opens.
 
 Fastest path. Install everything at once or cherry-pick individual skills.
 
-**Install all five skills:**
+**Install all five skills (recommended):**
 
 ```
 /plugin marketplace add muddahany/soul-skills
 /plugin install everything@soul-skills
+/reload-plugins
+/welcome
 ```
+
+The last command, `/welcome`, prints a clear next-steps message showing what got installed, what needs setup (SOUL), and how to start. **Always run `/welcome` right after install.** No need to read this README to figure out what to do next.
 
 **Or install one at a time:**
 

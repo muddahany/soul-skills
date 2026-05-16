@@ -11,7 +11,7 @@
   "plugins": [
     {
       "name": "everything",
-      "description": "Install all five skills at once: deslop, soul, platform-hat-deriver, voice-hat-template, platform-hat-template. SOUL ships unpopulated; run the interactive onboarding (see CLAUDE.md in the repo) to fill it in after install.",
+      "description": "Install all five skills plus the /welcome command at once: deslop, soul, platform-hat-deriver, voice-hat-template, platform-hat-template. After install run /welcome to see next steps. SOUL ships unpopulated and self-onboards via /soul.",
       "source": "./",
       "strict": false,
       "skills": [
@@ -20,6 +20,9 @@
         "./skills/platform-hat-deriver",
         "./skills/voice-hat-template",
         "./skills/platform-hat-template"
+      ],
+      "commands": [
+        "./commands/welcome.md"
       ]
     },
     {
@@ -51,11 +54,14 @@
     },
     {
       "name": "soul",
-      "description": "Personalized voice primitive. Self-onboarding: ships with a STATE CHECK that auto-triggers the interactive onboarding (sample / interview / hybrid mode) the first time the skill loads. Just say 'set up my SOUL' or '/soul' after install and Claude walks you through.",
+      "description": "Personalized voice primitive. Self-onboarding: ships with a STATE CHECK that auto-triggers the interactive onboarding (sample / interview / hybrid mode) the first time the skill loads. Just say 'set up my SOUL' or '/soul' after install. Ships with /welcome command for next-steps.",
       "source": "./",
       "strict": false,
       "skills": [
         "./skills/soul"
+      ],
+      "commands": [
+        "./commands/welcome.md"
       ]
     },
     {
