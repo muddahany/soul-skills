@@ -1,0 +1,38 @@
+{
+  "skill_name": "platform-hat-deriver",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Create a LinkedIn hat for me. (assumes populated SOUL)",
+      "expected_output": "Skill verifies SOUL is populated, looks up LinkedIn syntax from built-in reference (no markdown, 3000 char limit, autolinks only, etc.), asks 9 personal questions, drafts a hat with Platform Syntax + Target Channels + Tone Overlay + Post Structure + Hook Formulas + Hard Limits + Failure Modes + AI Detection Checklist + Required Structural Rules + Workflow + clipboard step.",
+      "assertions": [
+        {"text": "Skill verifies SOUL is populated before proceeding", "passed": false, "evidence": ""},
+        {"text": "Skill pre-fills LinkedIn syntax from built-in reference, does NOT ask user about syntax", "passed": false, "evidence": ""},
+        {"text": "Skill asks personal questions (failure modes, tone, channels, hard limits, structure, hook formulas, AI detection)", "passed": false, "evidence": ""},
+        {"text": "Generated hat includes Platform Syntax section", "passed": false, "evidence": ""},
+        {"text": "Generated hat includes Hard Limits section", "passed": false, "evidence": ""},
+        {"text": "Generated hat includes AI Detection Checklist with [ ] items", "passed": false, "evidence": ""},
+        {"text": "Generated hat references soul as base layer", "passed": false, "evidence": ""},
+        {"text": "Generated hat includes clipboard step in workflow", "passed": false, "evidence": ""}
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Create a hat for an obscure platform: BlueWidget Forum. (assumes populated SOUL)",
+      "expected_output": "Skill falls back to asking the user about syntax (since BlueWidget Forum is not in the built-in reference). All other personal questions are asked normally.",
+      "assertions": [
+        {"text": "Skill detects platform not in reference and asks syntax questions", "passed": false, "evidence": ""},
+        {"text": "Skill does not fabricate syntax for unknown platform", "passed": false, "evidence": ""}
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Create a Reddit hat for me. (SOUL is unpopulated)",
+      "expected_output": "Skill detects SOUL is unpopulated and refuses to proceed. Routes user to /soul.",
+      "assertions": [
+        {"text": "Skill refuses to derive when SOUL is unpopulated", "passed": false, "evidence": ""},
+        {"text": "Skill points user at /soul or the onboarding flow", "passed": false, "evidence": ""}
+      ]
+    }
+  ]
+}

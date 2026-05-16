@@ -38,6 +38,7 @@ Before opening a PR, your skill should:
 - Kebab-case for skill folder names and `name:` field.
 - **If a skill produces text the user will publish or send, the last workflow step MUST copy the output to the clipboard** (`pbcopy` on macOS, `xclip -selection clipboard` on Linux X11, `wl-copy` on Wayland, `clip.exe` on Windows / WSL). Users should not have to terminal-copy.
 - **If a skill targets a specific platform** (LinkedIn, Reddit, Slack, etc.), include a `## Platform syntax` section in the SKILL.md that explicitly lists markdown support, bold/italics syntax, header support, code block support, mention syntax, hashtag handling, line-break behaviour, and any character limit. Each platform has its own rendering rules and skipping this section produces visually broken output.
+- **Declare dependencies on other skills in two places:** (a) the `description` field, with a `REQUIRES <skill>` clause and the recovery instruction, and (b) a `## Prerequisites` section at the top of the SKILL.md body that tells Claude exactly what to do if the prerequisite is missing. Claude Code's frontmatter has no formal `requires:` field, so explicit dependency declarations in description + body are the convention used in this repo. See `platform-hat-deriver/SKILL.md` for the canonical example.
 
 ## How to submit
 

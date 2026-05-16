@@ -52,15 +52,17 @@ If the platform is NOT in the reference (niche forum, internal company tool, new
 
 ### Step 3: Gather personal and contextual rules (from the user, always)
 
-These cannot be looked up. Ask 7 questions, one or two at a time. Recommend voice-to-text (Wispr Flow, macOS Dictation, Whisper) for richer answers.
+These cannot be looked up. Ask 9 questions, one or two at a time. Recommend voice-to-text (Wispr Flow, macOS Dictation, Whisper) for richer answers.
 
-1. **Failure modes:** "What makes a post on [platform] look obviously AI-generated to YOU? Give 2 to 3 specific tells you have noticed. These are platform + audience-specific, not generic AI tells."
-2. **Tone overlay:** "How does YOUR voice adjust for this platform versus how you write elsewhere? More casual, more formal, more direct, more performative? Be specific."
-3. **Target channels / audience:** "WHERE on [platform] will you post? Specific subreddits, channels, audiences, lists, or contact segments? For each, what kind of contribution do you bring? (e.g., r/aws = cost optimization war stories; r/devops = real incident lessons; etc.)"
-4. **Hard limits:** "What are 3 to 5 things you will NEVER do on this platform? Hard limits, not preferences. (e.g., 'never link to my own site unprompted', 'never mention client names', 'never start a comment with As a [role]', 'never use hashtags here')."
-5. **Samples:** "Do you have 2 to 3 real examples of posts on this platform that match the register you want? Paste them if you do. Samples beat descriptions." (optional but high-value)
-6. **AI detection signals:** "Beyond generic AI tells, are there platform-specific signals that get a post flagged as AI by THIS community? (e.g., on Reddit: heavy formatting in comments; on LinkedIn: humblebrag openers; on Slack: paragraph walls). 3 to 6 checklist items."
-7. **Community quirks:** "Anything else community-specific that matters? Algorithm behaviour YOU have noticed, audience expectations in YOUR niche, community taboos, posting cadence rules."
+1. **Failure modes:** "What makes a post on [platform] look obviously AI-generated to YOU? Give 2 to 3 specific tells you have noticed."
+2. **Tone overlay:** "How does YOUR voice adjust for this platform versus how you write elsewhere? More casual, more formal, more direct, more performative?"
+3. **Target channels / audience:** "WHERE on [platform] will you post? Specific subreddits, channels, audiences, lists, or contact segments? For each, what kind of contribution do you bring?"
+4. **Hard limits:** "What are 3 to 5 things you will NEVER do on this platform? Hard limits, not preferences."
+5. **Post structure:** "What is the optimal structure for a post or message on this platform? (e.g., for LinkedIn: Hook → Context → Turn → Takeaway → Close; for Reddit comments: one point → support → stop; for Slack: ask + one-line context; for cold email: relevance → insight → ask). Describe the skeleton."
+6. **Hook formulas (if applicable):** "Are there specific opening formulas that work on this platform? (e.g., specific number, confession, counterintuitive, story entry, direct challenge). Give 3 to 5 you have seen work."
+7. **Samples:** "Do you have 2 to 3 real examples of posts on this platform that match the register you want? Paste them. Samples beat descriptions." (optional but high-value)
+8. **AI detection signals:** "Beyond generic AI tells, are there platform-specific signals that get a post flagged as AI by THIS community? 3 to 6 checklist items."
+9. **Community quirks:** "Anything else community-specific that matters? Algorithm behaviour, audience expectations, community taboos, posting cadence."
 
 If the user gives weak or AI-shaped answers, ask followups ("can you say more about that?", "what's a specific example?"). Do NOT fabricate.
 
@@ -68,14 +70,16 @@ If the user gives weak or AI-shaped answers, ask followups ("can you say more ab
 
 Combine the looked-up syntax (Step 2) with the personal/contextual rules (Step 3):
 
-- **Platform syntax** (Step 2): from the reference, or from the user if unknown. Mechanical, must be precise.
+- **Platform syntax** (Step 2): from the reference, or from the user if unknown.
 - **Target channels and audience** (Step 3 q3): where the user posts, what they bring to each.
 - **Length norms**: from the reference where available, refined by the user's typical-good-post answer.
 - **Tone overlay** (Step 3 q2): 1 to 2 paragraphs on register adjustment.
+- **Post structure** (Step 3 q5): the skeleton for a post or message. Numbered steps.
+- **Hook formulas** (Step 3 q6 — for platforms with feeds/posts): 3 to 5 opening patterns the user has seen work.
 - **Hard limits** (Step 3 q4): non-negotiable "never do this" rules.
 - **Failure modes** (Step 3 q1): platform-specific AI-tells.
-- **AI detection checklist** (Step 3 q6): platform-specific signals that get flagged as AI. Convert each tell into a `[ ]` checkbox item.
-- **Required structural rules** (Step 3 q7): community/algorithm quirks.
+- **AI detection checklist** (Step 3 q8): platform-specific signals that get flagged as AI. Convert each tell into a `[ ]` checkbox item.
+- **Required structural rules** (Step 3 q9): community/algorithm quirks.
 
 Anything uncertain, tag `[verify]` in the draft.
 
@@ -125,6 +129,24 @@ Where on this platform the user will post and what they bring to each.
 ## Tone overlay
 
 [1 to 2 paragraphs describing how the user's voice adjusts for this platform]
+
+## Post / message structure
+
+[The skeleton the user follows. Numbered steps. Examples:
+- For LinkedIn posts: 1) Hook (2 lines max) 2) Context 3) Turn / insight 4) Takeaway (one, not three) 5) Close
+- For Reddit comments: 1) Answer in the first sentence 2) Support if needed 3) Stop
+- For cold email: 1) Relevance sentence 2) One insight 3) One ask
+Use the user's actual structure.]
+
+## Hook formulas (if applicable)
+
+[3 to 5 opening patterns the user has seen work on this platform. Examples for LinkedIn:
+- Specific number: "We cut $14K/mo from one Lambda function."
+- Confession: "I deleted 200 alarms last week."
+- Counterintuitive: "The most expensive service isn't the one you monitor."
+- Story entry: "A client called at 11pm because the bill doubled."
+- Direct challenge: "Most microservices architectures are distributed monoliths."
+Skip if the platform has no concept of feed-style posts (e.g., Slack, email).]
 
 ## Hard limits (never do these)
 

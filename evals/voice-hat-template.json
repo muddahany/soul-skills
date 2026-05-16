@@ -1,0 +1,14 @@
+{
+  "skill_name": "voice-hat-template",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "I want to manually create my own voice hat without the SOUL onboarding.",
+      "expected_output": "Skill is presented as an escape hatch. Recommends SOUL primitive instead. Provides the skeleton with placeholders to fill in.",
+      "assertions": [
+        {"text": "Skill states it is an escape hatch and SOUL is recommended", "passed": false, "evidence": ""},
+        {"text": "Skill provides placeholders for banned chars, banned phrases, required style, tone", "passed": false, "evidence": ""}
+      ]
+    }
+  ]
+}

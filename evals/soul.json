@@ -1,0 +1,26 @@
+{
+  "skill_name": "soul",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Set up my SOUL.",
+      "expected_output": "Skill loads, detects STATE CHECK callout (unpopulated), tells the user setup takes 20-40 min, offers sample/interview/hybrid modes, does NOT default to a mode.",
+      "assertions": [
+        {"text": "Skill detects unpopulated state via STATE CHECK", "passed": false, "evidence": ""},
+        {"text": "Skill recommends voice-to-text (Wispr Flow, etc.)", "passed": false, "evidence": ""},
+        {"text": "Skill offers three modes: sample, interview, hybrid", "passed": false, "evidence": ""},
+        {"text": "Skill does not default to a mode without user choice", "passed": false, "evidence": ""}
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Write a quick post for me. (assumes populated SOUL)",
+      "expected_output": "Skill applies the Notice + Care check BEFORE polishing prose. Asks 'would the user have noticed/cared/chosen to say this?' Applies expression rules. Copies to clipboard.",
+      "assertions": [
+        {"text": "Skill runs Notice + Care check first", "passed": false, "evidence": ""},
+        {"text": "Skill applies Expression rules (banned chars, banned phrases)", "passed": false, "evidence": ""},
+        {"text": "Skill copies final draft to clipboard", "passed": false, "evidence": ""}
+      ]
+    }
+  ]
+}

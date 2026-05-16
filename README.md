@@ -23,10 +23,14 @@ The bar: when someone reads your output, they should think "this person has some
 | Path | Type | What it is |
 |---|---|---|
 | `skills/deslop/` | Universal skill | Catches AI-generated tells in any text draft. Install as-is. |
-| `skills/soul/` | Personalized skill, populated by Claude | Encodes YOUR voice, writing style, and values that shape your voice. The recommended core skill. |
-| `skills/platform-hat-deriver/` | Meta-skill | Auto-generates platform-specific hats from your populated SOUL. Built-in syntax reference for LinkedIn, Reddit, Slack, Twitter/X, Discord, GitHub, Substack, and email so the deriver only asks the user about personal/contextual rules. Run once per platform. |
+| `skills/soul/` | Personalized skill, populated by Claude | Encodes YOUR voice, perceptual filters (NOTICE), values, identity, current focus, thinking patterns. The recommended core skill. |
+| `skills/platform-hat-deriver/` | Meta-skill | Auto-generates platform-specific hats from your populated SOUL. Built-in syntax reference for LinkedIn, Reddit, Slack, Twitter/X, Discord, GitHub, Substack, and email. Asks 9 personal questions (failure modes, tone, channels, hard limits, post structure, hook formulas, AI detection signals, etc.). Run once per platform. |
+| `skills/whisper-flow/` | Input pipeline skill | Takes raw voice-to-text dictation and restructures into clean prose WITHOUT changing your ideas. Composes with soul + platform hats. The recommended way to get content out of your head. |
 | `skills/voice-hat-template/` | Manual template (escape hatch) | Raw skeleton if you prefer to write your own voice rules without the SOUL interactive interview. |
 | `skills/platform-hat-template/` | Manual template (escape hatch) | Raw skeleton for platform rules. Most users should prefer `platform-hat-deriver`. |
+| `commands/welcome.md` | Slash command | `/welcome` prints clear next-steps after install. |
+| `commands/diagnose.md` | Slash command | `/diagnose` health-checks every soul-skills component on your machine. Flags unpopulated SOUL, missing skills, stale hats. |
+| `examples/` | Reference | Sanitized populated SOUL.md example so you can see what "done" looks like. |
 
 ## How to use
 

@@ -1,0 +1,26 @@
+{
+  "skill_name": "deslop",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Please review this draft for AI tells before I post it on Reddit: 'I'm excited to share that we've leveraged a robust microservices architecture to deliver seamless, scalable solutions that empower our customers to navigate their cloud journey.'",
+      "expected_output": "Identifies P0/P1 vocabulary hits (excited, leveraged, robust, seamless, scalable, empower, navigate as metaphor), proposes a rewrite stripped of those terms, and copies the rewrite to clipboard.",
+      "assertions": [
+        {"text": "Skill flags 'excited to share' as P0 chatbot artifact", "passed": false, "evidence": ""},
+        {"text": "Skill flags 'leveraged' and 'robust' as Tier 1 vocabulary", "passed": false, "evidence": ""},
+        {"text": "Skill flags 'navigate' as a metaphor banned word", "passed": false, "evidence": ""},
+        {"text": "Skill provides a deslopped rewrite", "passed": false, "evidence": ""},
+        {"text": "Skill copies the final output to clipboard via pbcopy/xclip/clip.exe", "passed": false, "evidence": ""}
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Quick rhythm check: 'I went to the store. I bought some bread. I went home. I ate the bread.'",
+      "expected_output": "Skill flags structural rhythm uniformity (4 sentences of similar length), suggests varying sentence lengths.",
+      "assertions": [
+        {"text": "Skill flags rhythm uniformity", "passed": false, "evidence": ""},
+        {"text": "Skill proposes varied-length rewrite", "passed": false, "evidence": ""}
+      ]
+    }
+  ]
+}

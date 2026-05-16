@@ -5,24 +5,26 @@
     "email": "moh94hany@gmail.com"
   },
   "metadata": {
-    "description": "Claude Code skills built to AMPLIFY genuine voice, not generate fake voice. Anchored by SOUL, a personalized voice primitive populated interactively from your own writing samples or an interview.",
-    "version": "0.1.0"
+    "description": "Claude Code skills built to AMPLIFY genuine voice, not generate fake voice. Anchored by SOUL, a personalized voice primitive populated interactively from your own writing samples or an interview. Composes with whisper-flow (raw dictation input), platform-hat-deriver (auto-derived platform hats), and deslop (universal AI-tell catcher).",
+    "version": "0.2.0"
   },
   "plugins": [
     {
       "name": "everything",
-      "description": "Install all five skills plus the /welcome command at once: deslop, soul, platform-hat-deriver, voice-hat-template, platform-hat-template. After install run /welcome to see next steps. SOUL ships unpopulated and self-onboards via /soul.",
+      "description": "Install all six skills plus /welcome and /diagnose commands: deslop, soul, platform-hat-deriver, whisper-flow, voice-hat-template, platform-hat-template. After install run /welcome to see next steps. SOUL ships unpopulated and self-onboards via /soul. Use /diagnose any time to health-check installed soul-skills.",
       "source": "./",
       "strict": false,
       "skills": [
         "./skills/deslop",
         "./skills/soul",
         "./skills/platform-hat-deriver",
+        "./skills/whisper-flow",
         "./skills/voice-hat-template",
         "./skills/platform-hat-template"
       ],
       "commands": [
-        "./commands/welcome.md"
+        "./commands/welcome.md",
+        "./commands/diagnose.md"
       ]
     },
     {
@@ -36,7 +38,7 @@
     },
     {
       "name": "platform-hat-deriver",
-      "description": "Meta-skill that auto-generates platform-specific writing hats from a populated SOUL plus a platform name. Run once per platform. Requires SOUL to be populated first.",
+      "description": "Meta-skill that auto-generates platform-specific writing hats from a populated SOUL plus a platform name. REQUIRES SOUL to be populated first; if not, routes user to /soul. Built-in syntax reference for LinkedIn, Reddit, Slack, Twitter/X, Discord, GitHub, Substack, email. Asks 9 personal questions covering failure modes, tone overlay, target channels, hard limits, post structure, hook formulas, samples, AI detection signals, community quirks.",
       "source": "./",
       "strict": false,
       "skills": [
@@ -54,14 +56,15 @@
     },
     {
       "name": "soul",
-      "description": "Personalized voice primitive. Self-onboarding: ships with a STATE CHECK that auto-triggers the interactive onboarding (sample / interview / hybrid mode) the first time the skill loads. Just say 'set up my SOUL' or '/soul' after install. Ships with /welcome command for next-steps.",
+      "description": "Personalized voice primitive. Self-onboarding: ships with a STATE CHECK that auto-triggers the interactive onboarding (sample / interview / hybrid mode) the first time the skill loads. Encodes the user's perceptual filters (NOTICE), values (VALUE), identity (WHO), current focus, thinking patterns, and expression non-negotiables. Just say 'set up my SOUL' or '/soul' after install. Ships with /welcome and /diagnose commands.",
       "source": "./",
       "strict": false,
       "skills": [
         "./skills/soul"
       ],
       "commands": [
-        "./commands/welcome.md"
+        "./commands/welcome.md",
+        "./commands/diagnose.md"
       ]
     },
     {
@@ -71,6 +74,15 @@
       "strict": false,
       "skills": [
         "./skills/voice-hat-template"
+      ]
+    },
+    {
+      "name": "whisper-flow",
+      "description": "Input pipeline for raw voice-to-text dictation (Wispr Flow, macOS Dictation, Whisper). Identifies ideas, strips fillers, restructures cadence, preserves all user ideas, then applies soul + platform hat, then copies to clipboard. Composes with soul and platform hats; deslop runs as a final pass.",
+      "source": "./",
+      "strict": false,
+      "skills": [
+        "./skills/whisper-flow"
       ]
     }
   ]

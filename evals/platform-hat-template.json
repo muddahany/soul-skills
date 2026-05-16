@@ -1,0 +1,15 @@
+{
+  "skill_name": "platform-hat-template",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "I want to manually fill in a platform hat without using the deriver.",
+      "expected_output": "Skill is presented as an escape hatch. Recommends platform-hat-deriver instead. Provides the skeleton with placeholders including Platform Syntax block.",
+      "assertions": [
+        {"text": "Skill states it is an escape hatch and platform-hat-deriver is recommended", "passed": false, "evidence": ""},
+        {"text": "Skill provides Platform Syntax placeholders", "passed": false, "evidence": ""},
+        {"text": "Skill includes clipboard step in workflow template", "passed": false, "evidence": ""}
+      ]
+    }
+  ]
+}

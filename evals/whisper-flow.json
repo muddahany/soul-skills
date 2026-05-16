@@ -1,0 +1,26 @@
+{
+  "skill_name": "whisper-flow",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "I whispered this. Restructure for LinkedIn please: 'uhh okay so basically the thing about Lambda cold starts is like, people always talk about provisioned concurrency right, but the real issue is, um, when you do that you end up paying for capacity you're not using, like the math just doesn't work for most workloads, you know? and like, the better answer is usually just to accept the cold start and optimize the init code, like move SDK clients outside the handler, lazy load heavy deps, that kind of thing. that's what we did at the last place and we went from like 800ms cold starts to under 200ms without any provisioned concurrency.'",
+      "expected_output": "Skill identifies ideas, removes fillers (uhh, okay, basically, like, you know, um), restructures into LinkedIn-appropriate prose, applies soul + linkedin-hat, copies to clipboard. Preserves the specific numbers (800ms → 200ms) and the technical claims.",
+      "assertions": [
+        {"text": "Skill identifies the ideas list before rewriting", "passed": false, "evidence": ""},
+        {"text": "Skill removes filler words but preserves all ideas", "passed": false, "evidence": ""},
+        {"text": "Skill preserves the specific numbers (800ms, 200ms)", "passed": false, "evidence": ""},
+        {"text": "Skill applies LinkedIn platform syntax (no markdown)", "passed": false, "evidence": ""},
+        {"text": "Skill copies final output to clipboard", "passed": false, "evidence": ""}
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Clean up this typed paragraph: 'Microservices are good. Use them when you have a real reason.'",
+      "expected_output": "Skill detects this is typed (not whispered) and routes to soul or deslop instead of running the whisper-flow pipeline.",
+      "assertions": [
+        {"text": "Skill detects this is not raw whisper input", "passed": false, "evidence": ""},
+        {"text": "Skill routes elsewhere or asks the user to confirm whisper vs. typed", "passed": false, "evidence": ""}
+      ]
+    }
+  ]
+}
