@@ -51,7 +51,7 @@
     },
     {
       "name": "soul",
-      "description": "Personalized voice primitive. Ships as an unpopulated template. For best results, clone the repo and follow CLAUDE.md for the interactive onboarding flow (sample mode, interview mode, or hybrid). Plugin install just drops the unpopulated template, which the user then has to fill in manually.",
+      "description": "Personalized voice primitive. Self-onboarding: ships with a STATE CHECK that auto-triggers the interactive onboarding (sample / interview / hybrid mode) the first time the skill loads. Just say 'set up my SOUL' or '/soul' after install and Claude walks you through.",
       "source": "./",
       "strict": false,
       "skills": [

@@ -1,13 +1,24 @@
 ---
 name: soul
-description: Use whenever drafting any external-facing text in the user's personal voice. ALWAYS load when the user is composing emails, social posts, proposals, comments, profile bios, cover letters, replies, DMs, README files, or any author-attributed writing. Trigger on requests like "write a post about X", "draft an email", "help me reply", "write in my voice", "compose this", "as me", or any first-person writing task. Encodes the user's voice rules, banned phrases, required style, and values that shape voice. MUST be populated via the interactive onboarding in soul-skills/CLAUDE.md before it works; until populated, this skill should remind the user to run the onboarding flow.
+description: Use whenever drafting any external-facing text in the user's personal voice. ALWAYS load when the user is composing emails, social posts, proposals, comments, profile bios, cover letters, replies, DMs, README files, or any author-attributed writing. ALSO trigger on setup requests like "set up my soul", "onboard soul", "configure soul", "populate soul", "soul setup", "/soul", "I just installed soul", "what now", or any time the user has just installed soul-skills and is unsure what to do next. Encodes the user's voice rules, banned phrases, required style, and values that shape voice. Self-onboarding: if this file contains the "STATE CHECK" section below, the skill is unpopulated and Claude must run the onboarding in references/onboarding.md before applying voice rules.
+user-invocable: true
 ---
 
 # Soul
 
-> **NOT YET POPULATED.** This file is the template structure. To fill it in, point your Claude Code at the onboarding flow at the root of the soul-skills repo. Claude will ask you to share writing samples and/or answer questions, then draft a populated version of this file for you to review.
->
-> Once populated, remove this callout.
+## STATE CHECK (do this FIRST when this skill loads)
+
+**This skill is currently UNPOPULATED.** Before doing any voice work, you MUST run the interactive onboarding to fill in the user's voice rules, writing style, values, and examples.
+
+**Action right now:**
+
+1. Tell the user: "Your SOUL skill is not populated yet. Without that, I cannot apply your voice rules. Setting it up takes 20 to 40 minutes done well. Want to do it now?"
+2. If yes: load `references/onboarding.md` from this skill's directory (`~/.claude/skills/soul/references/onboarding.md`) and run that flow end to end.
+3. If no: tell them they can run `/soul` or say "set up my SOUL" later. Do not attempt voice work; just defer back to the user's original request without applying soul rules.
+
+Once onboarding completes, the populated SOUL.md replaces this template (the STATE CHECK section gets removed during population). The sections below are the template structure that gets filled in.
+
+---
 
 > **Genuineness is the entire game.** This file only works if its content is GENUINELY YOURS. AI-generated samples produce an AI-flavored soul that defeats the purpose. Bring real writing or speak your thoughts via voice-to-text (Wispr Flow, macOS Dictation, Whisper). Update this file over time as you notice your voice shifting or as new examples reveal rules that were not in the original draft.
 

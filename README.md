@@ -77,7 +77,7 @@ Fastest path. Install everything at once or cherry-pick individual skills.
 
 Available plugins: `everything`, `deslop`, `soul`, `platform-hat-deriver`, `voice-hat-template`, `platform-hat-template`.
 
-If you install `soul` (alone or via `everything`), it lands UNPOPULATED. Fill it in manually or run the onboarding from Path 1 afterwards.
+If you install `soul` (alone or via `everything`), the file lands UNPOPULATED. The skill is **self-onboarding**: just say "set up my SOUL" or invoke `/soul` after install, and Claude detects the unpopulated state and walks you through the interactive flow (sample mode, interview mode, or hybrid). No need to clone the repo or run anything extra.
 
 ### Path 3: manual `cp -r` (for power users)
 
