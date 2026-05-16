@@ -81,6 +81,7 @@ After (sounds like me):
 6. Propose specific line edits, not whole-draft rewrites unless tone is broken throughout.
 7. Present the revised version with a short diff summary.
 8. Wait for approval before treating the rewrite as final.
+9. **Copy the approved draft to the clipboard.** Use `pbcopy` (macOS), `xclip -selection clipboard` (Linux X11), `wl-copy` (Linux Wayland), or `clip.exe` (Windows / WSL). Pipe via HEREDOC or `printf '%s'` so newlines and special characters are preserved. Confirm to the user: "Copied to clipboard."
 
 ## Anti-patterns
 

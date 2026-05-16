@@ -74,6 +74,7 @@ One paragraph describing how you sound in writing. This is the texture rule that
 3. **Rewrite specific lines** rather than the whole draft, unless tone violations are pervasive.
 4. **Present the revised version** with a short diff summary explaining what changed.
 5. **Wait for approval.** Voice is personal. Do not assume.
+6. **Copy the approved draft to the clipboard.** Use `pbcopy` (macOS), `xclip -selection clipboard` (Linux X11), `wl-copy` (Linux Wayland), or `clip.exe` (Windows / WSL). Pipe via HEREDOC or `printf '%s'` so newlines are preserved. Confirm to the user: "Copied to clipboard."
 
 ## Output Format
 

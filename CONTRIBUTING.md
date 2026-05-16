@@ -36,6 +36,8 @@ Before opening a PR, your skill should:
 - Real numbers only. If you do not have data, do not invent it.
 - Explain the WHY behind rules. Avoid excessive ALL-CAPS MUST/NEVER patterns. Anthropic's official guidance calls these a "code smell" indicating overly rigid specification.
 - Kebab-case for skill folder names and `name:` field.
+- **If a skill produces text the user will publish or send, the last workflow step MUST copy the output to the clipboard** (`pbcopy` on macOS, `xclip -selection clipboard` on Linux X11, `wl-copy` on Wayland, `clip.exe` on Windows / WSL). Users should not have to terminal-copy.
+- **If a skill targets a specific platform** (LinkedIn, Reddit, Slack, etc.), include a `## Platform syntax` section in the SKILL.md that explicitly lists markdown support, bold/italics syntax, header support, code block support, mention syntax, hashtag handling, line-break behaviour, and any character limit. Each platform has its own rendering rules and skipping this section produces visually broken output.
 
 ## How to submit
 

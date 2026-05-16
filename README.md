@@ -89,6 +89,13 @@ Most published voice skills encode the AUTHOR's voice. Installing them makes you
 
 The downstream benefit: platform-specific hats (LinkedIn, Reddit, Slack, etc.) get DERIVED from your `soul` plus the platform's conventions using the `platform-hat-deriver` skill. One personalized source of truth, many platform-tuned outputs. Each derived hat is a thin delta on top of SOUL, so updates to your SOUL propagate.
 
+## Universal patterns across these skills
+
+Two conventions show up in every output-producing skill in this repo:
+
+1. **Copy-to-clipboard as the final step.** Once you approve the output, Claude pipes it straight to your clipboard (`pbcopy` / `xclip` / `clip.exe`). No terminal-copying. Paste straight into Slack, LinkedIn, your editor, wherever.
+2. **Platform syntax is treated as load-bearing.** When a skill targets a specific platform (LinkedIn, Reddit, Slack, etc.), the SKILL.md explicitly encodes that platform's syntax: markdown variant, bold/italic syntax, header support, mention format, hashtag handling, line-break behaviour, character limits. Generic "format constraints" is not enough; the platform syntax section is what keeps your output from rendering broken.
+
 ## What goes in `soul`
 
 The populated `soul/SKILL.md` has these sections:

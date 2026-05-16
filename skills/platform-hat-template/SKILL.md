@@ -29,6 +29,21 @@ Trigger this skill when drafting content for a specific platform. Replace `PLATF
 
 Fill these in with the rules specific to YOUR target platform. Categories below are starting points; adapt as needed.
 
+### Platform syntax
+
+The rendering surface. Get this right or the post breaks visually.
+
+- **Markdown support:** `<<full / variant / none>>`
+- **Bold syntax:** `<<**bold** / *bold* / _bold_ / not supported>>`
+- **Italics syntax:** `<<*italic* / _italic_ / not supported>>`
+- **Headers:** `<<allowed in posts / allowed in comments / not at all>>`
+- **Code blocks:** `<<triple backticks / inline only / not supported>>`
+- **Inline links:** `<<markdown / autolink only / not supported>>`
+- **Mentions:** `<<@user / u/user / not supported>>`
+- **Hashtags:** `<<clickable / text only / skip>>`
+- **Line breaks:** `<<single newline = paragraph / blank line required>>`
+- **Character limit:** `<<hard cap if any>>`
+
 ### Format constraints
 
 What does the platform's UI reward or punish?
@@ -77,10 +92,12 @@ Anything the platform's algorithm or culture explicitly rewards.
 
 1. **Confirm the platform context.** If unclear, ask.
 2. **Apply the personal voice hat first** (if you have one). Voice rules are the base layer.
-3. **Apply this platform's format constraints.** Strip or add what the platform expects.
+3. **Apply this platform's format constraints AND syntax.** Convert markdown to the platform's variant. Strip unsupported syntax.
 4. **Apply the tone overlay.** Same voice, platform-adjusted register.
 5. **Run the failure-mode check.** Catch the platform-specific cringe before publishing.
-6. **Length check.** Cut to the platform's norm.
+6. **Length check.** Cut to the platform's norm. Enforce character limit if any.
+7. **Wait for approval** before treating the draft as final.
+8. **Copy the approved draft to the clipboard.** Use `pbcopy` (macOS), `xclip -selection clipboard` (Linux X11), `wl-copy` (Linux Wayland), or `clip.exe` (Windows / WSL). Pipe via HEREDOC or `printf '%s'` so newlines are preserved. Confirm to the user: "Copied to clipboard."
 
 ## Output Format
 

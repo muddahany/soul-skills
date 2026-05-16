@@ -143,6 +143,7 @@ Triadic parallel SENTENCE structure ("Stuff X. Stuff Y. Stuff Z.") is borderline
 6. **Propose specific rewrites** inline, not whole-doc rewrites unless P0 issues are pervasive.
 7. **Present revised version + change summary.**
 8. **Wait for approval** before treating the rewrite as final.
+9. **Copy the approved draft to the clipboard.** Use `pbcopy` (macOS), `xclip -selection clipboard` (Linux X11), `wl-copy` (Linux Wayland), or `clip.exe` (Windows / WSL). Pipe via HEREDOC or `printf '%s'` so newlines and special characters are preserved. Confirm to the user: "Copied to clipboard."
 
 ## Output Format
 

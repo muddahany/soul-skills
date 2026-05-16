@@ -40,7 +40,17 @@ Ask 4 to 6 questions, one or two at a time. Adapt based on answers. Recommend vo
 
 1. "What makes a post on [platform] look obviously AI-generated to you? Give 2 to 3 specific tells you have noticed."
 2. "What is the typical length of a good post or comment there?" (word count or rough range)
-3. "Any format constraints? Headers OK? Bullet lists OK? Emojis? Hashtags? Markdown? Line breaks?"
+3. **Platform syntax** (the most important question, ask explicitly). "What is the SYNTAX of this platform? Specifically:
+   - Does it render full markdown, a markdown variant (Slack mrkdwn, Reddit's subset, etc.), or no markdown at all?
+   - Bold syntax: `**bold**`, `*bold*`, `_bold_`, or none?
+   - Italics syntax: `*italic*`, `_italic_`, or none?
+   - Headers allowed? In posts, in comments, both, or never?
+   - Code blocks: triple backticks, single backticks for inline, or unsupported?
+   - Inline links: markdown `[text](url)`, auto-link only, numbered references, or none?
+   - Mentions: `@user`, `u/user`, `<@user>`, or no mentions?
+   - Hashtags: clickable, just text, or skip entirely?
+   - Line breaks: single newline = paragraph, or do you need a blank line?
+   - Character limit: any hard cap? (Twitter: 280, LinkedIn ~3000, etc.)"
 4. "How does YOUR voice adjust for this platform versus how you write elsewhere? More casual, more formal, more direct, more performative?"
 5. "Do you have 2 to 3 real examples of posts on this platform that match the register you want? Paste them if you do. Samples beat descriptions." (optional but high-value)
 6. "Anything else specific to this platform that matters? Algorithm quirks, audience expectations, community taboos, posting cadence."
@@ -51,6 +61,7 @@ If the user gives weak or AI-shaped answers, ask followups ("can you say more ab
 
 From the user's answers, identify and write down:
 
+- **Platform syntax**: markdown variant, bold/italic syntax, headers, code blocks, links, mentions, hashtags, line-break behaviour, character limits. This is the most concrete section; encode it precisely so the hat can mechanically enforce it.
 - **Format constraints**: what the platform UI rewards or punishes (length, structure, format).
 - **Length norms**: numeric guidance for posts and replies.
 - **Failure modes**: platform-specific tells that mark a post as AI-generated to that community.
@@ -66,12 +77,27 @@ Generate a SKILL.md at `~/.claude/skills/<platform>-hat/SKILL.md` using this str
 ```markdown
 ---
 name: <platform>-hat
-description: Use when drafting content for <Platform>. Trigger on requests like "write a <platform> post", "draft this for <platform>", "<platform> reply", or when the user explicitly mentions <platform>. Layered on top of `soul`: SOUL provides the base voice; this hat applies <platform>-specific format, length, tone overlay, and failure-mode checks.
+description: Use when drafting content for <Platform>. Trigger on requests like "write a <platform> post", "draft this for <platform>", "<platform> reply", or when the user explicitly mentions <platform>. Layered on top of `soul`: SOUL provides the base voice; this hat applies <platform>-specific syntax, format, length, tone overlay, and failure-mode checks. Final step copies the output to clipboard.
 ---
 
 # <Platform> Hat
 
 > **Layered on top of `soul`.** Apply soul voice rules first (banned characters, banned phrases, required style, writing style, values). Then apply the <platform>-specific overrides below.
+
+## Platform syntax
+
+This is the rendering surface. The output MUST conform exactly or the post breaks.
+
+- **Markdown support:** [full / variant / none] — [variant name if applicable]
+- **Bold syntax:** [`**bold**` / `*bold*` / `_bold_` / not supported]
+- **Italics syntax:** [`*italic*` / `_italic_` / not supported]
+- **Headers:** [allowed in posts / allowed in comments / not at all]
+- **Code blocks:** [triple backticks / inline only / not supported]
+- **Inline links:** [markdown / autolink only / numbered references / not supported]
+- **Mentions:** [`@user` / `u/user` / `<@user>` / not supported]
+- **Hashtags:** [clickable / text only / skip]
+- **Line breaks:** [single newline = paragraph / blank line required]
+- **Character limit:** [hard cap if any, e.g., 280 for Twitter, ~3000 for LinkedIn, none otherwise]
 
 ## Format constraints
 
@@ -97,10 +123,12 @@ description: Use when drafting content for <Platform>. Trigger on requests like 
 
 1. Apply soul rules first.
 2. Apply tone overlay (register adjustment).
-3. Apply format constraints.
+3. Apply format constraints AND platform syntax. Convert markdown to the variant the platform actually renders. Strip what is unsupported.
 4. Run failure-mode check; rewrite any matches.
-5. Trim or expand to length norms.
-6. Output revised draft with what changed summary.
+5. Trim or expand to length norms. Enforce character limit if any.
+6. Present the revised draft with a short summary of what changed.
+7. Wait for user approval.
+8. **Copy the approved draft to the clipboard.** Use `pbcopy` on macOS, `xclip -selection clipboard` on Linux, or `clip.exe` on Windows. Use HEREDOC or `printf '%s'` for multi-line content so newlines are preserved. Confirm to the user: "Copied to clipboard."
 
 ## Examples (where available)
 

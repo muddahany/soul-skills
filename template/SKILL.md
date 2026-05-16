@@ -31,6 +31,7 @@ Numbered, imperative steps. Tell Claude exactly what to do.
 1. [Step one]
 2. [Step two]
 3. [Step three]
+4. **If the skill produces text the user will publish or send, the last step MUST be copy-to-clipboard.** Use `pbcopy` (macOS), `xclip -selection clipboard` (Linux X11), `wl-copy` (Linux Wayland), or `clip.exe` (Windows / WSL). Pipe via HEREDOC or `printf '%s'` so newlines and special characters survive. Confirm to the user: "Copied to clipboard."
 
 ## Output Format
 
